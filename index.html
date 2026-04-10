@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contract Response Viewer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Contract review workspace</p>
+        <h1>Contract Response Viewer</h1>
+        <p class="hero-text">
+          Upload a PDF contract, run the live clause-review analysis, and inspect the returned
+          controls, evidence, risks, and raw response tree in one place.
+        </p>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <section class="utility-strip">
+        <section class="card utility-card utility-upload">
+          <div class="section-heading compact-heading">
+            <div>
+              <p class="section-kicker">Workspace</p>
+              <h2>Load and inspect</h2>
+            </div>
+          </div>
+
+          <div class="utility-actions">
+            <button id="uploadButton" class="button button-secondary" type="button">Choose PDF</button>
+            <button id="analyzeButton" class="button button-primary" type="button" disabled>Analyze Contract</button>
+            <button id="viewTreeButton" class="button button-secondary" type="button" hidden>View JSON Tree</button>
+            <button id="clearButton" class="button button-secondary" type="button" hidden>Clear view</button>
+            <input id="fileInput" type="file" accept=".pdf,application/pdf" hidden>
+          </div>
+
+          <div id="feedback" class="feedback" role="status" aria-live="polite" hidden></div>
+
+          <div id="selectedFileState" class="selected-file-state" aria-live="polite">
+            <div class="selected-file-mark">No file selected</div>
+            <div>
+              <strong id="selectedFileName">Choose a PDF to begin</strong>
+              <p id="selectedFileHint">The app will upload the file to the contract-review API and render the returned JSON response.</p>
+            </div>
+          </div>
+
+          <div
+            id="dropzone"
+            class="dropzone compact-dropzone"
+            tabindex="0"
+            role="button"
+            aria-describedby="dropzoneHint"
+          >
+            <span class="dropzone-tag">PDF</span>
+            <h2>Drop a contract PDF here</h2>
+            <p id="dropzoneHint">
+              Use drag and drop or browse for a single PDF file, then run the live analysis.
+            </p>
+            <span class="dropzone-action">Select PDF</span>
+          </div>
+        </section>
+
+        <section id="overviewCard" class="card utility-card overview-card" hidden>
+          <div class="section-heading compact-heading">
+            <div>
+              <p class="section-kicker">Document</p>
+              <h2>Response overview</h2>
+            </div>
+          </div>
+
+          <div id="overviewHighlights" class="overview-highlights"></div>
+          <div id="overviewMeta" class="meta-grid compact-meta-grid"></div>
+        </section>
+
+        <section id="statsCard" class="card utility-card utility-stats-card" hidden>
+          <div class="section-heading compact-heading">
+            <div>
+              <p class="section-kicker">Summary</p>
+              <h2>Risk snapshot</h2>
+            </div>
+          </div>
+
+          <div id="statsGrid" class="stats-grid utility-stats-grid"></div>
+        </section>
+      </section>
+
+      <section class="content-grid">
+        <aside class="review-rail">
+          <section id="filtersCard" class="card rail-card" hidden>
+            <div class="section-heading">
+              <div>
+                <p class="section-kicker">Controls</p>
+                <h2>Filter review set</h2>
+              </div>
+              <button id="resetFiltersButton" class="text-button" type="button">Reset</button>
+            </div>
+
+            <label class="field">
+              <span class="field-label">Search</span>
+              <input
+                id="searchInput"
+                class="input"
+                type="search"
+                placeholder="Search title, reasons, gaps, evidence"
+                autocomplete="off"
+              >
+            </label>
+
+            <div class="field">
+              <span class="field-label">Status</span>
+              <div id="statusFilters" class="chip-group" role="group" aria-label="Status filters">
+                <button class="chip is-active" type="button" data-status="all">All</button>
+                <button class="chip" type="button" data-status="complete">Complete</button>
+                <button class="chip" type="button" data-status="partial">Partial</button>
+                <button class="chip" type="button" data-status="missing">Missing</button>
+              </div>
+            </div>
+
+            <label class="toggle-row">
+              <input id="highRiskToggle" type="checkbox">
+              <span>Show only high-risk controls</span>
+            </label>
+
+            <p id="controlCountLabel" class="filter-footnote"></p>
+          </section>
+
+          <section id="controlsCard" class="card controls-card" hidden>
+            <div class="section-heading">
+              <div>
+                <p class="section-kicker">Review list</p>
+                <h2>Control coverage</h2>
+              </div>
+            </div>
+            <div id="controlsList" class="controls-list" aria-label="Contract controls"></div>
+          </section>
+        </aside>
+
+        <section class="detail-pane" aria-live="polite">
+          <div id="detailEmpty" class="empty-state">
+            <div class="empty-state-mark">Review</div>
+            <h2>Analyze a contract PDF</h2>
+            <p>
+              Choose a PDF, run the clause-review analysis, and inspect the returned control status,
+              evidence, remediation guidance, and raw response tree.
+            </p>
+          </div>
+
+          <article id="detailView" class="detail-view" hidden>
+            <header class="detail-header">
+              <div>
+                <div id="detailBadges" class="detail-badges"></div>
+                <h2 id="detailTitle"></h2>
+                <p id="detailReason" class="detail-reason"></p>
+              </div>
+              <div id="detailMetrics" class="detail-metrics"></div>
+            </header>
+
+            <section id="detailInsights" class="detail-insights"></section>
+
+            <details id="assessmentCard" class="assessment-panel" hidden open>
+              <summary class="assessment-summary">
+                <div>
+                  <p class="section-kicker">Assessment</p>
+                  <h3>Overall assessment</h3>
+                </div>
+                <span id="assessmentSummaryPill" class="section-pill"></span>
+              </summary>
+
+              <div class="assessment-columns">
+                <div>
+                  <h3 class="mini-title">Key gaps</h3>
+                  <div id="keyGapsList"></div>
+                </div>
+                <div>
+                  <h3 class="mini-title">Recommended next actions</h3>
+                  <div id="actionsList"></div>
+                </div>
+              </div>
+            </details>
+
+            <section id="detailSections" class="detail-sections"></section>
+          </article>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <div id="treeModal" class="tree-modal" hidden aria-hidden="true">
+    <div id="treeModalBackdrop" class="tree-modal-backdrop"></div>
+    <div class="tree-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="treeModalTitle">
+      <header class="tree-modal-header">
+        <div>
+          <p class="section-kicker">Inspector</p>
+          <h2 id="treeModalTitle">Raw JSON tree</h2>
+          <p class="tree-modal-copy">Explore the uploaded response as an expandable object tree.</p>
+        </div>
+
+        <div class="tree-modal-actions">
+          <button id="treeExpandAllButton" class="button button-secondary" type="button">Expand all</button>
+          <button id="treeCollapseAllButton" class="button button-secondary" type="button">Collapse all</button>
+          <button id="treeCloseButton" class="button button-secondary" type="button">Close</button>
+        </div>
+      </header>
+
+      <div class="tree-toolbar">
+        <label class="field tree-search-field">
+          <span class="field-label">Search tree</span>
+          <input
+            id="treeSearchInput"
+            class="input"
+            type="search"
+            placeholder="Search keys or values"
+            autocomplete="off"
+          >
+        </label>
+        <p id="treeSearchStatus" class="tree-search-status"></p>
+      </div>
+
+      <div id="treeContent" class="tree-content"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

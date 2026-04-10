@@ -1,0 +1,272 @@
+{
+    "request_id": "6764d727-1a45-4a47-ade4-6a2b30eb18c8",
+    "document_meta": {
+        "file_name": "DATA PROCESSING AGREEMENT AND TECHNOLOGY SERVICES TERMS.pdf",
+        "file_type": "pdf",
+        "pages": 6,
+        "text_extraction_mode": "native_pdf",
+        "ocr_used": false
+    },
+    "extraction_meta": {
+        "segments_created": 83,
+        "annexures_detected": 0,
+        "confidence": 0.95,
+        "selected_controls": [
+            "strict_purpose_limitation",
+            "adequate_security_safeguards",
+            "breach_notification_sla",
+            "dsr_assistance",
+            "subprocessing_restrictions",
+            "deletion_or_return_on_termination",
+            "audit_rights_and_regulator_access"
+        ],
+        "processing_time_ms": 80173.55,
+        "llm_used": true,
+        "analysis_version": "v1"
+    },
+    "summary": {
+        "controls_complete": 1,
+        "controls_partial": 6,
+        "controls_missing": 0,
+        "high_risk_controls": [
+            "strict_purpose_limitation",
+            "adequate_security_safeguards",
+            "breach_notification_sla",
+            "subprocessing_restrictions"
+        ]
+    },
+    "controls": [
+        {
+            "control_id": "strict_purpose_limitation",
+            "title": "Strict Purpose Limitation",
+            "status": "partial",
+            "confidence": 0.57,
+            "found_elements": [
+                "processing only on documented or written instructions of the bank",
+                "processing only for agreed services or on behalf of the bank"
+            ],
+            "missing_elements": [
+                "no vendor secondary use of personal data",
+                "no internal use for analytics, improvement, or model training without approval"
+            ],
+            "matched_clauses": [
+                "2. Definitions\nFor the purposes of this Agreement:\n“Bank Data” means all records, files, reports, account-level information, transaction metadata, logs, customer\ninformation, employee information, operational data, and any Personal Data or confidential information\nprocessed by Nimbus Ledger Technologies Private Limited on behalf of Konkan Urban Bank Limited.\n“Personal Data” means any data about an identified or identifiable natural person processed under this\nAgreement.\n“Services” means the hosted software platform, implementation support, reconciliation workflows, case\nmanagement tools, support desk functions, managed file exchange capability, reporting services, and related\ntechnical support provided under this Agreement.",
+                "4.1 Nimbus Ledger Technologies Private Limited shall process Personal Data and Bank Data solely on behalf of",
+                "documented instructions communicated in writing, including instructions issued through signed statements of\nwork, support tickets, implementation records, or authorized email communications."
+            ],
+            "evidence_snippets": [
+                "\"documented instructions communicated in writing, including instructions issued through signed statements of work, support tickets, implementation records, or authorized email communications.\" (seg_012)",
+                "\"process Personal Data and Bank Data solely on behalf of\" (seg_011)",
+                "\"processed by Nimbus Ledger Technologies Private Limited on behalf of Konkan Urban Bank Limited\" (seg_006)"
+            ],
+            "red_flags": [],
+            "contradictions": [],
+            "reason": "The clauses explicitly tie processing to written bank instructions and to acting on behalf of the bank, satisfying two mandatory requirements. No language limits secondary or internal uses, so those mandatory elements are missing. No optional prohibitions or red‑flag/contradictory language are present.",
+            "operational_impact": null,
+            "recommended_fix_summary": "Add or strengthen language covering: no vendor secondary use of personal data.",
+            "banking_regulatory_relevance": "Relevant for bank oversight, vendor risk, and regulatory defensibility."
+        },
+        {
+            "control_id": "adequate_security_safeguards",
+            "title": "Adequate Security Safeguards",
+            "status": "partial",
+            "confidence": 0.77,
+            "found_elements": [
+                "technical and or organizational safeguards",
+                "protection against unauthorized access, loss, misuse, or breach",
+                "encryption at rest",
+                "encryption in transit",
+                "access controls or least privilege",
+                "multi-factor authentication",
+                "logging and monitoring",
+                "security testing or certifications"
+            ],
+            "missing_elements": [
+                "general security commitment"
+            ],
+            "matched_clauses": [
+                "5.3 Nimbus Ledger Technologies Private Limited shall use appropriate access controls and internal procedures\nto prevent unauthorized use or disclosure of Bank Data.",
+                "6.3 Nimbus Ledger Technologies Private Limited shall encrypt Bank Data in transit over public or shared\nnetworks using current industry-standard cryptographic protocols and shall encrypt Bank Data at rest within\nproduction databases, object storage, and backup repositories using strong encryption mechanisms managed\nunder documented key-management procedures.",
+                "6.4 Nimbus Ledger Technologies Private Limited shall maintain role-based access controls, least-privilege\naccess assignments, multi-factor authentication for privileged access, centralized logging of administrative"
+            ],
+            "evidence_snippets": [
+                "use appropriate access controls ... to prevent unauthorized use or disclosure of Bank Data.",
+                "encrypt Bank Data in transit ... and encrypt Bank Data at rest ... using strong encryption mechanisms",
+                "maintain role-based access controls, least-privilege access assignments, multi-factor authentication for privileged access, centralized logging",
+                "maintains an information security management system aligned to ISO 27001 principles"
+            ],
+            "red_flags": [],
+            "contradictions": [],
+            "reason": "The clauses provide specific technical and organizational safeguards and address unauthorized access, but lack an overarching general security commitment.",
+            "operational_impact": null,
+            "recommended_fix_summary": "Add or strengthen language covering: general security commitment.",
+            "banking_regulatory_relevance": "Relevant for bank oversight, vendor risk, and regulatory defensibility."
+        },
+        {
+            "control_id": "breach_notification_sla",
+            "title": "Breach Notification SLAs",
+            "status": "partial",
+            "confidence": 0.61,
+            "found_elements": [
+                "explicit notification obligation for incidents or breaches",
+                "trigger based on discovery or awareness of the incident",
+                "defined timeline or very tight timing language",
+                "immediate preliminary notice"
+            ],
+            "missing_elements": [
+                "vendor cooperation or support after notice"
+            ],
+            "matched_clauses": [
+                "7.1 Nimbus Ledger Technologies Private Limited shall notify Konkan Urban Bank Limited immediately, and in\nany event no later than six hours after becoming aware of any Security Incident affecting Bank Data."
+            ],
+            "evidence_snippets": [
+                "shall notify Konkan Urban Bank Limited immediately, and in any event no later than six hours after becoming aware of any Security Incident affecting Bank Data"
+            ],
+            "red_flags": [
+                "promptly",
+                "without undue delay"
+            ],
+            "contradictions": [],
+            "reason": "The clause in seg_032 satisfies notification, discovery trigger, and a six‑hour deadline, meeting three mandatory requirements and includes the word 'immediately' as an optional strengthener. No provision addresses post‑notice cooperation, so that mandatory element is missing. No downgrade language or contradictory terms are present.",
+            "operational_impact": null,
+            "recommended_fix_summary": "Add or strengthen language covering: vendor cooperation or support after notice.",
+            "banking_regulatory_relevance": "Relevant for bank oversight, vendor risk, and regulatory defensibility."
+        },
+        {
+            "control_id": "dsr_assistance",
+            "title": "Assistance with Data Principal Rights (DSRs)",
+            "status": "partial",
+            "confidence": 0.72,
+            "found_elements": [
+                "assist with access requests",
+                "assist with correction or rectification",
+                "assist with deletion or erasure",
+                "applies within vendor systems or hosted environments",
+                "export or search support"
+            ],
+            "missing_elements": [
+                "remove weakening language: reasonable assistance"
+            ],
+            "matched_clauses": [
+                "8.1 Nimbus Ledger Technologies Private Limited shall, taking into account the nature of the processing and the\ninformation available to it, provide reasonable assistance to Konkan Urban Bank Limited in responding to\ncustomer and data principal requests relating to access, correction, rectification, update, or deletion of\nPersonal Data processed in connection with the Services.",
+                "12.5 Nimbus Ledger Technologies Private Limited shall, upon written request of Konkan Urban Bank Limited,\nprovide a written confirmation signed by an authorized officer stating that deletion from active systems has\nbeen completed.",
+                "8.3 Nimbus Ledger Technologies Private Limited shall make reasonable efforts to search for, retrieve, correct,\nand delete relevant Personal Data within the hosted environment to the extent necessary for the Bank to\ncomply with applicable law."
+            ],
+            "evidence_snippets": [
+                "provide reasonable assistance ... in responding to ... requests relating to access, correction, rectification, ... or deletion of Personal Data",
+                "make reasonable efforts to search for, retrieve, correct, and delete relevant Personal Data within the hosted environment",
+                "provide a written confirmation ... that deletion from active systems has been completed"
+            ],
+            "red_flags": [
+                "reasonable assistance",
+                "reasonable efforts"
+            ],
+            "contradictions": [],
+            "reason": "The clauses contain explicit assistance for access, correction, and deletion (seg_040) and specify actions within the hosted environment (seg_042), satisfying all mandatory elements. Seg_042 also mentions searching for data, matching the optional export/search support strengthener. However, the language is qualified by \"reasonable\" assistance/efforts, which are downgrade triggers and flagged as red flags.",
+            "operational_impact": null,
+            "recommended_fix_summary": "Add or strengthen language covering: remove weakening language: reasonable assistance.",
+            "banking_regulatory_relevance": "Relevant for bank oversight, vendor risk, and regulatory defensibility."
+        },
+        {
+            "control_id": "subprocessing_restrictions",
+            "title": "Sub-processing Restrictions",
+            "status": "partial",
+            "confidence": 0.35,
+            "found_elements": [],
+            "missing_elements": [
+                "prior written authorization or approval of the bank",
+                "no unrestricted sub-processing",
+                "equivalent obligations imposed on the sub-processor",
+                "vendor remains responsible for sub-processors"
+            ],
+            "matched_clauses": [],
+            "evidence_snippets": [],
+            "red_flags": [],
+            "contradictions": [],
+            "reason": "No relevant clauses were retrieved for this control.",
+            "operational_impact": null,
+            "recommended_fix_summary": "Add or strengthen language covering: prior written authorization or approval of the bank.",
+            "banking_regulatory_relevance": "Relevant for bank oversight, vendor risk, and regulatory defensibility."
+        },
+        {
+            "control_id": "deletion_or_return_on_termination",
+            "title": "Data Deletion / Return upon Termination",
+            "status": "partial",
+            "confidence": 0.21,
+            "found_elements": [
+                "covers backups or copies"
+            ],
+            "missing_elements": [
+                "return or delete obligation exists",
+                "applies on termination, expiry, or bank instruction",
+                "covers personal data held by the vendor",
+                "includes timing or completion requirement"
+            ],
+            "matched_clauses": [
+                "12.4 Bank Data contained in backups or disaster recovery media that cannot be immediately deleted in the\nordinary course may be retained until such media is recycled, overwritten, or naturally expires under the\nvendor’s standard backup retention schedule, provided that such retained data remains subject to\nconfidentiality and security protections no less protective than those set out in this Agreement."
+            ],
+            "evidence_snippets": [
+                "\"Bank Data contained in backups or disaster recovery media that cannot be immediately deleted ... may be retained until such media is recycled, overwritten, or naturally expires under the vendor’s standard backup retention schedule\""
+            ],
+            "red_flags": [
+                "retention tied to vendor's backup schedule rather than a termination deletion deadline",
+                "no explicit timeline for deletion or return",
+                "allows data to remain until media is naturally expires, which may be indefinite"
+            ],
+            "contradictions": [],
+            "reason": "The clause discusses backup retention but does not impose a return or deletion obligation upon contract termination, lacks timing, and relies on vendor policy, leaving gaps in mandatory requirements.",
+            "operational_impact": null,
+            "recommended_fix_summary": "Add or strengthen language covering: return or delete obligation exists.",
+            "banking_regulatory_relevance": "Relevant for bank oversight, vendor risk, and regulatory defensibility."
+        },
+        {
+            "control_id": "audit_rights_and_regulator_access",
+            "title": "Audit Rights and Regulatory Access",
+            "status": "complete",
+            "confidence": 0.92,
+            "found_elements": [
+                "explicit bank audit right",
+                "vendor cooperation obligation",
+                "access to relevant records, systems, controls, or evidence",
+                "audit right is meaningful and not illusory",
+                "bank may use internal auditors",
+                "bank may use external auditors or appointed assessors",
+                "regulator or supervisory inspection support"
+            ],
+            "missing_elements": [],
+            "matched_clauses": [
+                "review, or inquiry by a banking regulator, supervisory authority, or other competent authority having\njurisdiction over Konkan Urban Bank Limited to the extent relevant to the Services or the processing of Bank\nData.",
+                "10.1 Konkan Urban Bank Limited, its internal auditors, statutory auditors, external professional advisers, and",
+                "availability, provide production support, and enable export of reports and case records on request."
+            ],
+            "evidence_snippets": [
+                "\"Konkan Urban Bank Limited, its internal auditors, statutory auditors, external professional advisers\" (seg_049)",
+                "\"shall cooperate with any lawful request, inspection, audit, ... by a banking regulator, supervisory authority\" (seg_054)",
+                "\"enable export of reports and case records on request\" (seg_010)"
+            ],
+            "red_flags": [],
+            "contradictions": [],
+            "reason": "The clauses grant the bank and its internal/external auditors explicit audit rights, obligate the vendor to cooperate with lawful audit requests, provide rights to obtain relevant records and system evidence, and contain no limiting language that would render the audit right illusory. Optional strengtheners are present for internal/external auditors and regulator support.",
+            "operational_impact": null,
+            "recommended_fix_summary": null,
+            "banking_regulatory_relevance": null
+        }
+    ],
+    "overall_assessment": {
+        "risk_level": "high",
+        "key_gaps": [
+            "Strict Purpose Limitation: no vendor secondary use of personal data",
+            "Adequate Security Safeguards: general security commitment",
+            "Breach Notification SLAs: vendor cooperation or support after notice",
+            "Assistance with Data Principal Rights (DSRs): remove weakening language: reasonable assistance",
+            "Sub-processing Restrictions: prior written authorization or approval of the bank"
+        ],
+        "recommended_next_actions": [
+            "Add or strengthen language covering: no vendor secondary use of personal data.",
+            "Add or strengthen language covering: general security commitment.",
+            "Add or strengthen language covering: vendor cooperation or support after notice.",
+            "Add or strengthen language covering: remove weakening language: reasonable assistance.",
+            "Add or strengthen language covering: prior written authorization or approval of the bank."
+        ]
+    }
+}

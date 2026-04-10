@@ -1,0 +1,323 @@
+{
+    "request_id": "9d071eb5-f1e0-4ad0-ba1a-c115e5c0849c",
+    "document_meta": {
+        "file_name": "MASTER SERVICES AGREEMENT AND DATA PROCESSING TERMS.pdf",
+        "file_type": "pdf",
+        "pages": 6,
+        "text_extraction_mode": "native_pdf",
+        "ocr_used": false
+    },
+    "extraction_meta": {
+        "segments_created": 72,
+        "annexures_detected": 0,
+        "confidence": 0.95,
+        "selected_controls": [
+            "strict_purpose_limitation",
+            "adequate_security_safeguards",
+            "breach_notification_sla",
+            "dsr_assistance",
+            "subprocessing_restrictions",
+            "deletion_or_return_on_termination",
+            "audit_rights_and_regulator_access"
+        ],
+        "processing_time_ms": 145476.64,
+        "llm_used": true,
+        "analysis_version": "v2"
+    },
+    "summary": {
+        "controls_complete": 2,
+        "controls_partial": 4,
+        "controls_missing": 1,
+        "high_risk_controls": [
+            "strict_purpose_limitation",
+            "breach_notification_sla",
+            "subprocessing_restrictions",
+            "audit_rights_and_regulator_access"
+        ]
+    },
+    "controls": [
+        {
+            "control_id": "strict_purpose_limitation",
+            "title": "Strict Purpose Limitation",
+            "status": "partial",
+            "confidence": 0.83,
+            "found_elements": [
+                "processing only on documented or written instructions of the bank",
+                "processing only for agreed services or on behalf of the bank",
+                "no vendor secondary use of personal data",
+                "no internal use for analytics, improvement, or model training without approval",
+                "vendor must notify the bank if an instruction appears unlawful",
+                "explicit prohibition on data monetization"
+            ],
+            "missing_elements": [
+                "resolve contradiction: clause 4.5 allows internal improvement of services, contradicting the absolute prohibition in clause 4.3"
+            ],
+            "matched_clauses": [
+                "documented instructions communicated by the Bank in writing, including by email, ticket, implementation\ndocument, or signed change request.\n4.2 Asteron Cloud Services Private Limited shall not sell, disclose, mine, profile, enrich, commercialize, or\notherwise use Personal Data for its own independent purposes.\n4.3 Asteron Cloud Services Private Limited shall not use Personal Data or Bank Data to train, fine-tune, validate,\nbenchmark, or otherwise improve any artificial intelligence, machine learning, or statistical model for itself or\nany third party.\n4.4 If Asteron Cloud Services Private Limited believes that an instruction received from the Bank infringes\napplicable law, it shall promptly notify the Bank in writing before carrying out that instruction, unless\nprohibited by law from doing so.\n4.5 Notwithstanding the foregoing, Asteron Cloud Services Private Limited may compile generalized service\nusage metrics and operational learnings to improve the performance, usability, and efficiency of its services,\nprovided that no customer-facing content is intentionally published.",
+                "4.1 Asteron Cloud Services Private Limited shall process Personal Data solely on behalf of Sahyadri Commercial\ndocumented instructions communicated by the Bank in writing, including by email, ticket, implementation\ndocument, or signed change request.\n4.2 Asteron Cloud Services Private Limited shall not sell, disclose, mine, profile, enrich, commercialize, or\notherwise use Personal Data for its own independent purposes.\n4.3 Asteron Cloud Services Private Limited shall not use Personal Data or Bank Data to train, fine-tune, validate,\nbenchmark, or otherwise improve any artificial intelligence, machine learning, or statistical model for itself or\nany third party.\n4.4 If Asteron Cloud Services Private Limited believes that an instruction received from the Bank infringes\napplicable law, it shall promptly notify the Bank in writing before carrying out that instruction, unless\nprohibited by law from doing so."
+            ],
+            "evidence_snippets": [
+                "\"process Personal Data solely on behalf of Sahyadri Commercial documented instructions communicated by the Bank in writing\" (4.1)",
+                "\"shall not sell, disclose, mine, profile, enrich, commercialize, or otherwise use Personal Data for its own independent purposes\" (4.2)",
+                "\"shall not use Personal Data or Bank Data to train, fine‑tune, validate, benchmark, or otherwise improve any artificial intelligence, machine learning, or statistical model\" (4.3)",
+                "\"shall promptly notify the Bank in writing before carrying out that instruction\" (4.4)",
+                "\"may compile generalized service usage metrics and operational learnings to improve the performance...\" (4.5)"
+            ],
+            "red_flags": [
+                "clause 4.5 permits compiling generalized service usage metrics to improve performance, which is an internal analytics/improvement use",
+                "improve services"
+            ],
+            "contradictions": [
+                "clause 4.5 allows internal improvement of services, contradicting the absolute prohibition in clause 4.3"
+            ],
+            "reason": "All required purpose‑limitation mandates are present, but a clause allowing internal service‑performance improvement creates a red flag and a contradiction with the strict prohibition on internal analytics.",
+            "operational_impact": null,
+            "recommended_fix_summary": "Add or strengthen language covering: resolve contradiction: clause 4.5 allows internal improvement of services, contradicting the absolute prohibition in clause 4.3.",
+            "banking_regulatory_relevance": "Relevant for bank oversight, vendor risk, and regulatory defensibility."
+        },
+        {
+            "control_id": "adequate_security_safeguards",
+            "title": "Adequate Security Safeguards",
+            "status": "complete",
+            "confidence": 0.92,
+            "found_elements": [
+                "general security commitment",
+                "technical and or organizational safeguards",
+                "protection against unauthorized access, loss, misuse, or breach",
+                "encryption in transit",
+                "access controls or least privilege",
+                "logging and monitoring",
+                "backup and recovery"
+            ],
+            "missing_elements": [],
+            "matched_clauses": [
+                "Bank Data against unauthorized access, unauthorized disclosure, destruction, loss, alteration, and misuse.",
+                "12.3 Asteron Cloud Services Private Limited shall ensure that any retained copies remain protected by\ncompleted.\n12.4 Backup media containing Bank Data that cannot be immediately deleted in the ordinary course shall be\noverwritten or rendered inaccessible in accordance with Asteron Cloud Services Private Limited’s backup\nretention cycle, provided that such data shall not be restored except where required for disaster recovery\ntesting or legal compliance.\n12.5 Upon completion of deletion from active systems, Asteron Cloud Services Private Limited shall provide",
+                "include reasonable administrative, technical, and physical safeguards appropriate to the nature of the Services.\n6.3 Asteron Cloud Services Private Limited shall maintain role-based access management for its production\nsupport personnel and shall review privileged access periodically.\n6.4 Bank Data transmitted over public networks shall be encrypted in transit using current industry-standard\ntransport encryption.\n6.5 Asteron Cloud Services Private Limited shall maintain centralized logging for administrative actions in\nproduction systems and retain such logs for a reasonable period in accordance with its internal policy."
+            ],
+            "evidence_snippets": [
+                "shall maintain an information security program designed to protect Bank Data",
+                "include reasonable administrative, technical, and physical safeguards appropriate to the nature of the Services",
+                "protect Bank Data against unauthorized access, unauthorized disclosure, destruction, loss, alteration, and misuse",
+                "Bank Data transmitted over public networks shall be encrypted in transit",
+                "maintain role‑based access management for its production support personnel"
+            ],
+            "red_flags": [
+                "Reference to \"generally accepted industry practices\" may constitute a downgrade trigger by invoking industry‑standard language."
+            ],
+            "contradictions": [],
+            "reason": "All mandatory security elements are present and clearly articulated; several optional strengtheners are also included. The only concern is the reliance on generic industry‑practice language, which may dilute the obligations.",
+            "operational_impact": null,
+            "recommended_fix_summary": null,
+            "banking_regulatory_relevance": null
+        },
+        {
+            "control_id": "breach_notification_sla",
+            "title": "Breach Notification SLAs",
+            "status": "partial",
+            "confidence": 0.56,
+            "found_elements": [
+                "explicit notification obligation for incidents or breaches",
+                "trigger based on discovery or awareness of the incident",
+                "remediation support"
+            ],
+            "missing_elements": [
+                "defined timeline or very tight timing language",
+                "vendor cooperation or support after notice"
+            ],
+            "matched_clauses": [
+                "7.1 Asteron Cloud Services Private Limited shall notify Sahyadri Commercial Bank Limited promptly after\nbecoming aware of a Security Incident affecting Bank Data.\n7.2 Such notice shall be made by email to the Bank’s designated contact and shall include, to the extent then\nknown, a summary of the nature of the incident and the categories of data affected.",
+                "contain its effects, and mitigate any ongoing harm."
+            ],
+            "evidence_snippets": [
+                "shall notify Sahyadri Commercial Bank Limited promptly after becoming aware of a Security Incident",
+                "shall take reasonable steps to investigate the Security Incident, contain its effects, and mitigate any ongoing harm",
+                "after becoming aware of a Security Incident"
+            ],
+            "red_flags": [
+                "use of \"promptly\" as the only timing language (downgrade trigger)",
+                "no explicit tight deadline such as \"within 24 hours\"",
+                "cooperation clause not linked to notice event",
+                "promptly"
+            ],
+            "contradictions": [],
+            "reason": "The contract includes a clear notice duty and awareness trigger, but lacks a strict timeline and an explicit post‑notice cooperation requirement, and relies on the downgraded term \"promptly\".",
+            "operational_impact": null,
+            "recommended_fix_summary": "Add or strengthen language covering: defined timeline or very tight timing language.",
+            "banking_regulatory_relevance": "Relevant for bank oversight, vendor risk, and regulatory defensibility."
+        },
+        {
+            "control_id": "dsr_assistance",
+            "title": "Assistance with Data Principal Rights (DSRs)",
+            "status": "partial",
+            "confidence": 0.87,
+            "found_elements": [
+                "assist with access requests",
+                "assist with correction or rectification",
+                "assist with deletion or erasure",
+                "applies within vendor systems or hosted environments",
+                "defined operational timelines",
+                "export or search support",
+                "vendor cannot respond directly without bank approval",
+                "support for restriction or suppression workflows"
+            ],
+            "missing_elements": [
+                "remove weakening language: reasonable cooperation language may downgrade the assistance obligation"
+            ],
+            "matched_clauses": [
+                "as it becomes reasonably available.\n8. Assistance with Customer and Data Principal Requests\n8.1 Asteron Cloud Services Private Limited shall, taking into account the nature of the processing and the\ninformation available to it, assist Sahyadri Commercial Bank Limited in responding to requests from customers\nand other data principals relating to access, correction, rectification, update, restriction, export, deletion, or\nerasure of Personal Data processed in connection with the Services.\n8.2 Upon receiving a request directly from any customer or data principal concerning Personal Data processed\non behalf of the Bank, Asteron Cloud Services Private Limited shall not respond directly except on the\ndocumented instruction of the Bank, unless required to do so by applicable law.\n8.3 Asteron Cloud Services Private Limited shall provide reasonable cooperation to search, retrieve, correct,\nexport, suppress, or delete relevant Personal Data within its hosted environment and support systems where\nsuch action is required by the Bank.",
+                "8.1 Asteron Cloud Services Private Limited shall, taking into account the nature of the processing and the\ninformation available to it, assist Sahyadri Commercial Bank Limited in responding to requests from customers\nand other data principals relating to access, correction, rectification, update, restriction, export, deletion, or\nerasure of Personal Data processed in connection with the Services.\n8.2 Upon receiving a request directly from any customer or data principal concerning Personal Data processed\non behalf of the Bank, Asteron Cloud Services Private Limited shall not respond directly except on the\ndocumented instruction of the Bank, unless required to do so by applicable law.\n8.3 Asteron Cloud Services Private Limited shall provide reasonable cooperation to search, retrieve, correct,\nexport, suppress, or delete relevant Personal Data within its hosted environment and support systems where\nsuch action is required by the Bank.\n8.4 Asteron Cloud Services Private Limited shall maintain internal procedures to route such requests for\noperational handling without undue delay.\n9. Subcontracting and Sub-processing",
+                "8. Assistance with Customer and Data Principal Requests\n8.1 Asteron Cloud Services Private Limited shall, taking into account the nature of the processing and the\ninformation available to it, assist Sahyadri Commercial Bank Limited in responding to requests from customers\nand other data principals relating to access, correction, rectification, update, restriction, export, deletion, or\nerasure of Personal Data processed in connection with the Services.\n8.2 Upon receiving a request directly from any customer or data principal concerning Personal Data processed\non behalf of the Bank, Asteron Cloud Services Private Limited shall not respond directly except on the\ndocumented instruction of the Bank, unless required to do so by applicable law.\n8.3 Asteron Cloud Services Private Limited shall provide reasonable cooperation to search, retrieve, correct,\nexport, suppress, or delete relevant Personal Data within its hosted environment and support systems where\nsuch action is required by the Bank.\n8.4 Asteron Cloud Services Private Limited shall maintain internal procedures to route such requests for\noperational handling without undue delay."
+            ],
+            "evidence_snippets": [
+                "assist ... in responding to requests ... relating to access, correction, rectification, update, restriction, export, deletion, or erasure",
+                "shall not respond directly except on the documented instruction of the Bank",
+                "provide reasonable cooperation to search, retrieve, correct, export, suppress, or delete relevant Personal Data within its hosted environment",
+                "shall maintain internal procedures to ... without undue delay",
+                "assist ... in responding to requests ... relating to access"
+            ],
+            "red_flags": [
+                "reasonable cooperation language may downgrade the assistance obligation",
+                "general cooperation"
+            ],
+            "contradictions": [],
+            "reason": "The clause bundle comprehensively covers all mandatory DSR assistance duties, applies them to the vendor’s hosted environment, and includes several optional strengtheners, though the use of “reasonable cooperation” introduces a potential downgrade.",
+            "operational_impact": null,
+            "recommended_fix_summary": "Add or strengthen language covering: remove weakening language: reasonable cooperation language may downgrade the assistance obligation.",
+            "banking_regulatory_relevance": "Relevant for bank oversight, vendor risk, and regulatory defensibility."
+        },
+        {
+            "control_id": "subprocessing_restrictions",
+            "title": "Sub-processing Restrictions",
+            "status": "partial",
+            "confidence": 0.2,
+            "found_elements": [
+                "vendor remains responsible for sub-processors",
+                "sub-processor list disclosure"
+            ],
+            "missing_elements": [
+                "prior written authorization or approval of the bank",
+                "no unrestricted sub-processing",
+                "equivalent obligations imposed on the sub-processor"
+            ],
+            "matched_clauses": [
+                "8.4 Asteron Cloud Services Private Limited shall maintain internal procedures to route such requests for\noperational handling without undue delay.\n9. Subcontracting and Sub-processing\n9.1 Asteron Cloud Services Private Limited may engage its Affiliates and specialized infrastructure partners in\nconnection with the Services, provided that Asteron Cloud Services Private Limited remains responsible for\noverall service delivery.\n9.2 Asteron Cloud Services Private Limited shall use commercially reasonable efforts to ensure that any such\nthird party is bound by confidentiality and security obligations appropriate to the services being provided.\n9.3 On request, Asteron Cloud Services Private Limited shall provide the Bank with a current list of material\nsubcontractors used for the Services.",
+                "9.1 Asteron Cloud Services Private Limited may engage its Affiliates and specialized infrastructure partners in\nconnection with the Services, provided that Asteron Cloud Services Private Limited remains responsible for\noverall service delivery.\n9.2 Asteron Cloud Services Private Limited shall use commercially reasonable efforts to ensure that any such\nthird party is bound by confidentiality and security obligations appropriate to the services being provided.\n9.3 On request, Asteron Cloud Services Private Limited shall provide the Bank with a current list of material\nsubcontractors used for the Services.\n10. Records and Cooperation\n10.1 Asteron Cloud Services Private Limited shall maintain records reasonably necessary to demonstrate\nperformance of the Services and compliance with its obligations under this Agreement.",
+                "9. Subcontracting and Sub-processing\n9.1 Asteron Cloud Services Private Limited may engage its Affiliates and specialized infrastructure partners in\nconnection with the Services, provided that Asteron Cloud Services Private Limited remains responsible for\noverall service delivery.\n9.2 Asteron Cloud Services Private Limited shall use commercially reasonable efforts to ensure that any such\nthird party is bound by confidentiality and security obligations appropriate to the services being provided.\n9.3 On request, Asteron Cloud Services Private Limited shall provide the Bank with a current list of material\nsubcontractors used for the Services.\n10. Records and Cooperation"
+            ],
+            "evidence_snippets": [
+                "remains responsible for overall service delivery.",
+                "shall use commercially reasonable efforts to ensure that any such third party is bound by confidentiality and security obligations appropriate to the services being provided.",
+                "On request, Asteron Cloud Services Private Limited shall provide the Bank with a current list of material subcontractors used for the Services."
+            ],
+            "red_flags": [
+                "affiliate carve-out",
+                "notice only",
+                "blanket approval"
+            ],
+            "contradictions": [
+                "vendor may appoint subcontractors freely",
+                "subcontractors are outside compliance obligations"
+            ],
+            "reason": "The clause provides vendor liability and a list‑disclosure option but lacks required bank approval, allows unrestricted subcontracting, and uses only ‘commercially reasonable efforts’ for equivalent obligations, triggering red flags and contradictions.",
+            "operational_impact": null,
+            "recommended_fix_summary": "Add or strengthen language covering: prior written authorization or approval of the bank.",
+            "banking_regulatory_relevance": "Relevant for bank oversight, vendor risk, and regulatory defensibility."
+        },
+        {
+            "control_id": "deletion_or_return_on_termination",
+            "title": "Data Deletion / Return upon Termination",
+            "status": "complete",
+            "confidence": 0.92,
+            "found_elements": [
+                "return or delete obligation exists",
+                "applies on termination, expiry, or bank instruction",
+                "covers personal data held by the vendor",
+                "includes timing or completion requirement",
+                "covers backups or copies",
+                "narrow legal retention carve-out",
+                "continuing protection until deletion is complete"
+            ],
+            "missing_elements": [],
+            "matched_clauses": [
+                "the option of the Bank, return Bank Data in a commonly readable electronic format or securely delete such\nBank Data from active systems under its control.\n12.3 Asteron Cloud Services Private Limited shall ensure that any retained copies remain protected by",
+                "as required to complete an orderly transition or as otherwise required by law.",
+                "the option of the Bank, return Bank Data in a commonly readable electronic format or securely delete such\nBank Data from active systems under its control.\n12.3 Asteron Cloud Services Private Limited shall ensure that any retained copies remain protected by\n12.4 Backup media containing Bank Data that cannot be immediately deleted in the ordinary course shall be\noverwritten or rendered inaccessible in accordance with Asteron Cloud Services Private Limited’s backup\nretention cycle, provided that such data shall not be restored except where required for disaster recovery\ntesting or legal compliance."
+            ],
+            "evidence_snippets": [
+                "Within thirty days after the effective date of termination, Asteron Cloud Services Private Limited shall, at the option of the Bank, return Bank Data in a commonly readable electronic format or securely delete such Bank Data from active systems under its control.",
+                "Asteron Cloud Services Private Limited shall ensure that any retained copies remain protected by ...",
+                "Backup media containing Bank Data that cannot be immediately deleted ... shall be overwritten or rendered inaccessible in accordance with Asteron Cloud Services Private Limited’s backup retention cycle, provided that such data shall not be restored except where required for disaster recovery testing or legal compliance.",
+                "as required to complete an orderly transition or as otherwise required by law.",
+                "return Bank Data in a commonly readable electronic format or securely delete such Bank Data"
+            ],
+            "red_flags": [
+                "Backup deletion is tied to the vendor's backup retention cycle without a specific timeline, potentially extending retention.",
+                "Data may be restored for disaster recovery testing or legal compliance, which could conflict with a complete deletion objective."
+            ],
+            "contradictions": [
+                "Allowance for restoration of backup copies for disaster recovery/testing may undermine the deletion obligation."
+            ],
+            "reason": "All mandatory elements are present and clearly expressed; several optional strengtheners are also satisfied, though backup handling lacks a precise timeline and permits limited restoration, which are noted as red flags and a potential contradiction.",
+            "operational_impact": null,
+            "recommended_fix_summary": null,
+            "banking_regulatory_relevance": null
+        },
+        {
+            "control_id": "audit_rights_and_regulator_access",
+            "title": "Audit Rights and Regulatory Access",
+            "status": "missing",
+            "confidence": 0.05,
+            "found_elements": [],
+            "missing_elements": [
+                "explicit bank audit right",
+                "vendor cooperation obligation",
+                "access to relevant records, systems, controls, or evidence",
+                "audit right is meaningful and not illusory"
+            ],
+            "matched_clauses": [
+                "11.2 Asteron Cloud Services Private Limited may, at its discretion, provide copies or summaries of independent\naudit reports, security certifications, or control descriptions that it considers appropriate for customer review.\noperational feasibility considerations.\n11.4 Sahyadri Commercial Bank Limited shall not appoint any third-party assessor to access Asteron Cloud\nServices Private Limited’s premises or systems unless Asteron Cloud Services Private Limited separately agrees\nin writing for a specific case.\n12. Data Retention, Return, and Deletion",
+                "11.1 Sahyadri Commercial Bank Limited may, upon at least thirty business days’ prior written notice and not\nmore than once in any twelve-month period, request a review meeting with Asteron Cloud Services Private\nLimited to discuss the security and operational controls relevant to the Services.\n11.2 Asteron Cloud Services Private Limited may, at its discretion, provide copies or summaries of independent\naudit reports, security certifications, or control descriptions that it considers appropriate for customer review.\n11.4 Sahyadri Commercial Bank Limited shall not appoint any third-party assessor to access Asteron Cloud\nServices Private Limited’s premises or systems unless Asteron Cloud Services Private Limited separately agrees\nin writing for a specific case."
+            ],
+            "evidence_snippets": [
+                "Sahyadri Commercial Bank Limited may, upon at least thirty business days’ prior written notice and not more than once in any twelve‑month period, request a review meeting...",
+                "Asteron Cloud Services Private Limited may, at its discretion, provide copies or summaries of independent audit reports, security certifications, or control descriptions...",
+                "Sahyadri Commercial Bank Limited shall not appoint any third‑party assessor to access Asteron Cloud Services Private Limited’s premises or systems unless ... separately agrees in writing."
+            ],
+            "red_flags": [
+                "once per year only",
+                "summary reports only",
+                "vendor may deny audit at its sole discretion",
+                "third‑party assessor access prohibited",
+                "operational feasibility considerations",
+                "subject to vendor policy"
+            ],
+            "contradictions": [
+                "vendor may deny audit at its sole discretion",
+                "third‑party assessor access prohibited",
+                "third-party assessor access prohibited"
+            ],
+            "reason": "The audit clause limits the bank to an annual review meeting and discretionary provision of summary reports, forbids third‑party assessors, and does not obligate the vendor to cooperate or grant direct access to records, resulting in all mandatory audit elements being missing.",
+            "operational_impact": null,
+            "recommended_fix_summary": "Add or strengthen language covering: explicit bank audit right.",
+            "banking_regulatory_relevance": "Relevant for bank oversight, vendor risk, and regulatory defensibility."
+        }
+    ],
+    "overall_assessment": {
+        "risk_level": "high",
+        "key_gaps": [
+            "Strict Purpose Limitation: resolve contradiction: clause 4.5 allows internal improvement of services, contradicting the absolute prohibition in clause 4.3",
+            "Breach Notification SLAs: defined timeline or very tight timing language",
+            "Assistance with Data Principal Rights (DSRs): remove weakening language: reasonable cooperation language may downgrade the assistance obligation",
+            "Sub-processing Restrictions: prior written authorization or approval of the bank",
+            "Audit Rights and Regulatory Access: explicit bank audit right"
+        ],
+        "recommended_next_actions": [
+            "Add or strengthen language covering: resolve contradiction: clause 4.5 allows internal improvement of services, contradicting the absolute prohibition in clause 4.3.",
+            "Add or strengthen language covering: defined timeline or very tight timing language.",
+            "Add or strengthen language covering: remove weakening language: reasonable cooperation language may downgrade the assistance obligation.",
+            "Add or strengthen language covering: prior written authorization or approval of the bank.",
+            "Add or strengthen language covering: explicit bank audit right."
+        ]
+    }
+}
