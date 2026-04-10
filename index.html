@@ -32,6 +32,7 @@
           <div class="utility-actions">
             <button id="uploadButton" class="button button-secondary" type="button">Choose PDF</button>
             <button id="analyzeButton" class="button button-primary" type="button" disabled>Analyze Contract</button>
+            <button id="savedReviewsButton" class="button button-secondary" type="button">Saved Reviews</button>
             <button id="viewTreeButton" class="button button-secondary" type="button" hidden>View JSON Tree</button>
             <button id="clearButton" class="button button-secondary" type="button" hidden>Clear view</button>
             <input id="fileInput" type="file" accept=".pdf,application/pdf" hidden>
@@ -155,8 +156,10 @@
                 <h2 id="detailTitle"></h2>
                 <p id="detailReason" class="detail-reason"></p>
               </div>
-              <div id="detailMetrics" class="detail-metrics"></div>
-            </header>
+            <div id="detailMetrics" class="detail-metrics"></div>
+          </header>
+
+            <section id="detailReviewCard" class="review-card-shell"></section>
 
             <section id="detailInsights" class="detail-insights"></section>
 
@@ -220,6 +223,35 @@
       </div>
 
       <div id="treeContent" class="tree-content"></div>
+    </div>
+  </div>
+
+  <div id="libraryModal" class="library-modal" hidden aria-hidden="true">
+    <div id="libraryModalBackdrop" class="library-modal-backdrop"></div>
+    <div class="library-modal-panel" role="dialog" aria-modal="true" aria-labelledby="libraryModalTitle">
+      <header class="library-modal-header">
+        <div>
+          <p class="section-kicker">Library</p>
+          <h2 id="libraryModalTitle">Saved contract reviews</h2>
+          <p class="tree-modal-copy">
+            Reopen locally saved analyses and continue reviewing control verdicts and remarks.
+          </p>
+        </div>
+
+        <div class="library-modal-actions">
+          <button id="libraryDeleteButton" class="button button-danger" type="button">Delete All</button>
+          <button id="libraryRefreshButton" class="button button-secondary" type="button">Refresh</button>
+          <button id="libraryCloseButton" class="button button-secondary" type="button">Close</button>
+        </div>
+      </header>
+
+      <div class="library-toolbar">
+        <p id="libraryStatusText" class="library-status-text"></p>
+      </div>
+
+      <div id="libraryDeletePanel" class="library-delete-panel" hidden></div>
+
+      <div id="savedReviewsList" class="saved-reviews-list"></div>
     </div>
   </div>
 
