@@ -17,6 +17,13 @@ const MAX_FILE_SIZE_BYTES = 25 * 1024 * 1024;
 const REVIEW_STORAGE_DIR = path.join(__dirname, "storage", "reviews");
 const REVIEW_SOURCE_STORAGE_DIR = path.join(__dirname, "storage", "review-files");
 const REVIEW_FILE_EXTENSION = ".json";
+const SUPPORTED_DOCUMENT_EXTENSIONS = new Set([".pdf", ".doc", ".docx"]);
+const DOCUMENT_MIME_TYPES_BY_EXTENSION = new Map([
+  [".pdf", "application/pdf"],
+  [".doc", "application/msword"],
+  [".docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"]
+]);
+const SUPPORTED_DOCUMENT_MIME_TYPES = new Set(Array.from(DOCUMENT_MIME_TYPES_BY_EXTENSION.values()));
 const ALLOWED_VERDICTS = new Set(["unreviewed", "correct", "incorrect"]);
 const DELETE_ALL_REVIEWS_PASSWORD = "Gravity";
 
@@ -32,7 +39,7 @@ app.use(express.json({ limit: "1mb" }));
 
 app.post("/api/contracts/clause-review/report", upload.single("file"), async (req, res) => {
   try {
-    const file = getValidatedPdfFile(req.file);
+    const file = getValidatedDocumentFile(req.file);
     const analysis = await analyzeContract(file);
     res.status(200).json(analysis);
   } catch (error) {
@@ -42,7 +49,7 @@ app.post("/api/contracts/clause-review/report", upload.single("file"), async (re
 
 app.post("/api/reviews", upload.single("file"), async (req, res) => {
   try {
-    const file = getValidatedPdfFile(req.file);
+    const file = getValidatedDocumentFile(req.file);
     const analysis = await analyzeContract(file);
     const reviewRecord = createReviewRecord(file, analysis);
     const reviewFilePath = getReviewFilePath(
@@ -103,7 +110,7 @@ app.get("/api/reviews/:reviewId/file", async (req, res) => {
     }
 
     const filePath = getStoredSourceFilePath(reviewRecord.source.stored_file_name);
-    res.type(reviewRecord.source.mime_type || "application/pdf");
+    res.type(getDocumentMimeType(reviewRecord.source.mime_type, reviewRecord.source.file_name));
     res.download(filePath, reviewRecord.source.download_name || reviewRecord.source.file_name, (error) => {
       if (!error || res.headersSent) {
         return;
@@ -165,7 +172,7 @@ app.use((error, _req, res, next) => {
   if (error instanceof multer.MulterError) {
     if (error.code === "LIMIT_FILE_SIZE") {
       res.status(413).json({
-        message: `The uploaded PDF exceeds the ${Math.round(MAX_FILE_SIZE_BYTES / (1024 * 1024))} MB limit.`
+        message: `The uploaded file exceeds the ${Math.round(MAX_FILE_SIZE_BYTES / (1024 * 1024))} MB limit.`
       });
       return;
     }
@@ -210,15 +217,18 @@ ensureStorageDirectories().catch((error) => {
 
 startServer(PORT);
 
-function getValidatedPdfFile(file) {
+function getValidatedDocumentFile(file) {
   if (!file) {
-    throw createHttpError(400, "A PDF file is required in the multipart field named \"file\".");
+    throw createHttpError(
+      400,
+      "A supported document file is required in the multipart field named \"file\"."
+    );
   }
 
   const mimeType = String(file.mimetype || "").toLowerCase();
-  const name = String(file.originalname || "").toLowerCase();
-  if (mimeType !== "application/pdf" && !name.endsWith(".pdf")) {
-    throw createHttpError(400, "Only PDF files are supported.");
+  const extension = getDocumentFileExtension(file.originalname);
+  if (!SUPPORTED_DOCUMENT_MIME_TYPES.has(mimeType) && !SUPPORTED_DOCUMENT_EXTENSIONS.has(extension)) {
+    throw createHttpError(400, "Only PDF, DOC, and DOCX files are supported.");
   }
 
   return file;
@@ -228,7 +238,7 @@ async function analyzeContract(file) {
   try {
     const formData = new FormData();
     const uploadedFile = new File([file.buffer], file.originalname, {
-      type: file.mimetype || "application/pdf"
+      type: getDocumentMimeType(file.mimetype, file.originalname)
     });
     formData.append("file", uploadedFile);
 
@@ -328,8 +338,9 @@ function validateContractResponse(data) {
 function createReviewRecord(file, analysis) {
   const timestamp = new Date().toISOString();
   const reviewId = crypto.randomUUID();
-  const downloadName = String(file.originalname || "Uploaded contract.pdf");
-  const storedFileName = getStoredSourceFileName(reviewId, downloadName, timestamp);
+  const fileExtension = getDocumentFileExtension(file.originalname, file.mimetype) || ".pdf";
+  const downloadName = String(file.originalname || "").trim() || `Uploaded contract${fileExtension}`;
+  const storedFileName = getStoredSourceFileName(reviewId, downloadName, timestamp, file.mimetype);
 
   return {
     review_id: reviewId,
@@ -337,7 +348,7 @@ function createReviewRecord(file, analysis) {
     updated_at: timestamp,
     source: {
       file_name: downloadName,
-      mime_type: String(file.mimetype || "application/pdf"),
+      mime_type: getDocumentMimeType(file.mimetype, downloadName),
       file_size: Number.isFinite(Number(file.size)) ? Number(file.size) : null,
       request_id: asNullableString(analysis.request_id),
       stored_file_name: storedFileName,
@@ -493,7 +504,10 @@ function normalizeStoredReviewRecord(record) {
     updated_at: updatedAt,
     source: {
       file_name: resolveStoredFileName(record),
-      mime_type: asNullableString(record.source && record.source.mime_type) || "application/pdf",
+      mime_type: getDocumentMimeType(
+        asNullableString(record.source && record.source.mime_type),
+        resolveStoredFileName(record)
+      ),
       file_size: toNumberOrNull(record.source && record.source.file_size),
       request_id:
         asNullableString(record.source && record.source.request_id) ||
@@ -630,11 +644,11 @@ function getStoredSourceFilePath(storedFileName) {
   return path.join(REVIEW_SOURCE_STORAGE_DIR, safeFileName);
 }
 
-function getStoredSourceFileName(reviewId, fileName, timestamp) {
+function getStoredSourceFileName(reviewId, fileName, timestamp, mimeType) {
   const safeReviewId = assertReviewId(reviewId);
   const timestampSlug = String(timestamp || new Date().toISOString()).replace(/[:.]/g, "-");
   const safeBaseName = sanitizeFileStem(fileName);
-  const fileExtension = path.extname(String(fileName || "")).toLowerCase() === ".pdf" ? ".pdf" : ".pdf";
+  const fileExtension = getDocumentFileExtension(fileName, mimeType) || ".pdf";
   return `${timestampSlug}--${safeBaseName}--${safeReviewId}${fileExtension}`;
 }
 
@@ -675,6 +689,32 @@ function sanitizeFileStem(fileName) {
     .slice(0, 60);
 
   return normalized || "contract-review";
+}
+
+function getDocumentFileExtension(fileName, mimeType) {
+  const extension = path.extname(String(fileName || "")).toLowerCase();
+  if (SUPPORTED_DOCUMENT_EXTENSIONS.has(extension)) {
+    return extension;
+  }
+
+  const normalizedMimeType = String(mimeType || "").toLowerCase();
+  for (const [candidateExtension, candidateMimeType] of DOCUMENT_MIME_TYPES_BY_EXTENSION.entries()) {
+    if (candidateMimeType === normalizedMimeType) {
+      return candidateExtension;
+    }
+  }
+
+  return "";
+}
+
+function getDocumentMimeType(mimeType, fileName) {
+  const normalizedMimeType = String(mimeType || "").toLowerCase();
+  if (SUPPORTED_DOCUMENT_MIME_TYPES.has(normalizedMimeType)) {
+    return normalizedMimeType;
+  }
+
+  const extension = getDocumentFileExtension(fileName);
+  return DOCUMENT_MIME_TYPES_BY_EXTENSION.get(extension) || "application/octet-stream";
 }
 
 function assertReviewId(value) {

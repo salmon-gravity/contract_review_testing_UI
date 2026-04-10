@@ -1,4 +1,11 @@
 const REVIEW_SAVE_DELAY_MS = 700;
+const SUPPORTED_DOCUMENT_EXTENSIONS = new Set([".pdf", ".doc", ".docx"]);
+const SUPPORTED_DOCUMENT_MIME_TYPES = new Set([
+  "application/pdf",
+  "application/msword",
+  "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+]);
+const SUPPORTED_DOCUMENT_LABEL = "PDF, DOC, or DOCX";
 const VERDICT_OPTIONS = [
   { value: "unreviewed", label: "Unreviewed" },
   { value: "correct", label: "Correct" },
@@ -95,7 +102,7 @@ const defaultEmptyMarkup = `
   <div class="empty-state-mark">Review</div>
   <h2>Analyze a contract or open a saved review</h2>
   <p>
-    Upload a PDF to create a locally saved review record, or reopen a prior contract from
+    Upload a contract document to create a locally saved review record, or reopen a prior contract from
     Saved Reviews and continue marking controls as correct or incorrect with remarks.
   </p>
 `;
@@ -355,7 +362,7 @@ function clearViewer() {
 
 function handleSelectedFile(file) {
   try {
-    validateSelectedPdf(file);
+    validateSelectedDocument(file);
     state.selectedFile = file;
     state.uploadStatus = "ready";
     state.uploadError = null;
@@ -372,7 +379,7 @@ function handleSelectedFile(file) {
 
 async function analyzeSelectedFile() {
   if (!state.selectedFile) {
-    const message = "Choose a PDF before starting the contract analysis.";
+    const message = `Choose a ${SUPPORTED_DOCUMENT_LABEL} file before starting the contract analysis.`;
     state.uploadStatus = "error";
     state.uploadError = message;
     setFeedback(message, "error");
@@ -381,7 +388,7 @@ async function analyzeSelectedFile() {
   }
 
   try {
-    validateSelectedPdf(state.selectedFile);
+    validateSelectedDocument(state.selectedFile);
 
     clearCurrentResults();
     resetFilterState();
@@ -499,7 +506,7 @@ async function deleteAllSavedReviews() {
     }
 
     setFeedback(
-      `Deleted ${deletedCount} saved review${deletedCount === 1 ? "" : "s"} and ${deletedFileCount} stored PDF${deletedFileCount === 1 ? "" : "s"} from local storage.`,
+      `Deleted ${deletedCount} saved review${deletedCount === 1 ? "" : "s"} and ${deletedFileCount} stored file${deletedFileCount === 1 ? "" : "s"} from local storage.`,
       "success"
     );
     render();
@@ -699,15 +706,19 @@ async function requestJson(url, options = {}) {
   return payload;
 }
 
-function validateSelectedPdf(file) {
+function validateSelectedDocument(file) {
   if (!file) {
-    throw new Error("Choose a PDF before starting the contract analysis.");
+    throw new Error(`Choose a ${SUPPORTED_DOCUMENT_LABEL} file before starting the contract analysis.`);
   }
 
   const fileName = String(file.name || "").toLowerCase();
   const mimeType = String(file.type || "").toLowerCase();
-  if (!fileName.endsWith(".pdf") && mimeType !== "application/pdf") {
-    throw new Error("Only PDF files are supported.");
+  const fileExtension = getFileExtension(fileName);
+  const hasSupportedExtension = SUPPORTED_DOCUMENT_EXTENSIONS.has(fileExtension);
+  const hasSupportedMimeType = SUPPORTED_DOCUMENT_MIME_TYPES.has(mimeType);
+
+  if (!hasSupportedExtension && !hasSupportedMimeType) {
+    throw new Error(`Only ${SUPPORTED_DOCUMENT_LABEL} files are supported.`);
   }
 }
 
@@ -989,7 +1000,7 @@ function renderUploadState() {
     markElement.textContent = "Ready";
     dom.selectedFileName.textContent = state.selectedFile.name;
     dom.selectedFileHint.textContent =
-      "Click Analyze Contract to upload the PDF, save the response locally, and start reviewing controls.";
+      `Click Analyze Contract to upload the ${getSelectedFileLabel(state.selectedFile)}, save the response locally, and start reviewing controls.`;
     return;
   }
 
@@ -998,7 +1009,7 @@ function renderUploadState() {
     markElement.textContent = "Uploading";
     dom.selectedFileName.textContent = state.selectedFile.name;
     dom.selectedFileHint.textContent =
-      "The PDF is being sent to the clause-review API. A saved review record will be created when the response is ready.";
+      `The ${getSelectedFileLabel(state.selectedFile)} is being sent to the clause-review API. A saved review record will be created when the response is ready.`;
     return;
   }
 
@@ -1022,14 +1033,14 @@ function renderUploadState() {
   if (status === "error") {
     dom.selectedFileState.classList.add("is-error");
     markElement.textContent = "Error";
-    dom.selectedFileName.textContent = hasFile ? state.selectedFile.name : "Choose a PDF to begin";
+    dom.selectedFileName.textContent = hasFile ? state.selectedFile.name : "Choose a document to begin";
     dom.selectedFileHint.textContent =
-      state.uploadError || "The PDF could not be analyzed. Choose a valid file and try again.";
+      state.uploadError || `The ${SUPPORTED_DOCUMENT_LABEL} file could not be analyzed. Choose a valid file and try again.`;
     return;
   }
 
   markElement.textContent = "No file selected";
-  dom.selectedFileName.textContent = "Choose a PDF to begin";
+  dom.selectedFileName.textContent = "Choose a document to begin";
   dom.selectedFileHint.textContent =
     "The app will upload the file to the contract-review API, save the response locally, and let you reopen the review later.";
 }
@@ -1428,7 +1439,7 @@ function renderLibraryDeletePanel() {
   dom.libraryDeletePanel.hidden = false;
   dom.libraryDeletePanel.innerHTML = `
     <p class="library-delete-warning">
-      This will permanently remove every saved review and stored uploaded PDF from local storage. This action cannot be undone.
+      This will permanently remove every saved review and stored uploaded file from local storage. This action cannot be undone.
     </p>
 
     <label class="field">
@@ -1477,7 +1488,7 @@ function getLibraryStatusText() {
   }
 
   if (!state.savedReviews.length) {
-    return "No saved reviews yet. Analyze a PDF to create the first local review record.";
+    return "No saved reviews yet. Analyze a document to create the first local review record.";
   }
 
   return `${state.savedReviews.length} saved review${state.savedReviews.length === 1 ? "" : "s"} available locally.`;
@@ -1504,7 +1515,7 @@ function renderSavedReviewsList() {
             href="/api/reviews/${encodeURIComponent(review.review_id)}/file"
             download="${escapeAttribute(review.download_name)}"
           >
-            Download PDF
+            Download File
           </a>
         `
         : `<span class="saved-review-unavailable">File unavailable</span>`;
@@ -2154,6 +2165,25 @@ function titleCase(value) {
 
 function humanizeId(value) {
   return titleCase(String(value || "").replace(/_/g, " "));
+}
+
+function getFileExtension(fileName) {
+  const match = String(fileName || "").toLowerCase().match(/(\.[a-z0-9]+)$/);
+  return match ? match[1] : "";
+}
+
+function getSelectedFileLabel(file) {
+  const extension = getFileExtension(file && file.name);
+  if (extension === ".pdf") {
+    return "PDF";
+  }
+  if (extension === ".doc") {
+    return "DOC";
+  }
+  if (extension === ".docx") {
+    return "DOCX";
+  }
+  return "document";
 }
 
 function escapeHtml(value) {

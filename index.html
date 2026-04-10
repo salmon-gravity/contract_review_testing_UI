@@ -13,7 +13,7 @@
         <p class="eyebrow">Contract review workspace</p>
         <h1>Contract Response Viewer</h1>
         <p class="hero-text">
-          Upload a PDF contract, run the live clause-review analysis, and inspect the returned
+          Upload a contract document, run the live clause-review analysis, and inspect the returned
           controls, evidence, risks, and raw response tree in one place.
         </p>
       </div>
@@ -30,12 +30,17 @@
           </div>
 
           <div class="utility-actions">
-            <button id="uploadButton" class="button button-secondary" type="button">Choose PDF</button>
+            <button id="uploadButton" class="button button-secondary" type="button">Choose File</button>
             <button id="analyzeButton" class="button button-primary" type="button" disabled>Analyze Contract</button>
             <button id="savedReviewsButton" class="button button-secondary" type="button">Saved Reviews</button>
             <button id="viewTreeButton" class="button button-secondary" type="button" hidden>View JSON Tree</button>
             <button id="clearButton" class="button button-secondary" type="button" hidden>Clear view</button>
-            <input id="fileInput" type="file" accept=".pdf,application/pdf" hidden>
+            <input
+              id="fileInput"
+              type="file"
+              accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+              hidden
+            >
           </div>
 
           <div id="feedback" class="feedback" role="status" aria-live="polite" hidden></div>
@@ -43,7 +48,7 @@
           <div id="selectedFileState" class="selected-file-state" aria-live="polite">
             <div class="selected-file-mark">No file selected</div>
             <div>
-              <strong id="selectedFileName">Choose a PDF to begin</strong>
+              <strong id="selectedFileName">Choose a document to begin</strong>
               <p id="selectedFileHint">The app will upload the file to the contract-review API and render the returned JSON response.</p>
             </div>
           </div>
@@ -55,12 +60,12 @@
             role="button"
             aria-describedby="dropzoneHint"
           >
-            <span class="dropzone-tag">PDF</span>
-            <h2>Drop a contract PDF here</h2>
+            <span class="dropzone-tag">PDF / DOC / DOCX</span>
+            <h2>Drop a contract document here</h2>
             <p id="dropzoneHint">
-              Use drag and drop or browse for a single PDF file, then run the live analysis.
+              Use drag and drop or browse for a single PDF, DOC, or DOCX file, then run the live analysis.
             </p>
-            <span class="dropzone-action">Select PDF</span>
+            <span class="dropzone-action">Select File</span>
           </div>
         </section>
 
@@ -142,9 +147,9 @@
         <section class="detail-pane" aria-live="polite">
           <div id="detailEmpty" class="empty-state">
             <div class="empty-state-mark">Review</div>
-            <h2>Analyze a contract PDF</h2>
+            <h2>Analyze a contract document</h2>
             <p>
-              Choose a PDF, run the clause-review analysis, and inspect the returned control status,
+              Choose a PDF, DOC, or DOCX file, run the clause-review analysis, and inspect the returned control status,
               evidence, remediation guidance, and raw response tree.
             </p>
           </div>
