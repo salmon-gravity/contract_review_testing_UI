@@ -1,272 +1,410 @@
 {
-    "request_id": "6764d727-1a45-4a47-ade4-6a2b30eb18c8",
+    "request_id": "563d4d40-12f1-4822-9c85-c95fb626634e",
     "document_meta": {
-        "file_name": "DATA PROCESSING AGREEMENT AND TECHNOLOGY SERVICES TERMS.pdf",
+        "file_name": "CUSTOMER OPERATIONS WORKFLOW AGREEMENT AND DATA PROTECTION TERMS.pdf",
         "file_type": "pdf",
-        "pages": 6,
+        "pages": 5,
         "text_extraction_mode": "native_pdf",
         "ocr_used": false
     },
     "extraction_meta": {
-        "segments_created": 83,
+        "segments_created": 67,
         "annexures_detected": 0,
         "confidence": 0.95,
         "selected_controls": [
-            "strict_purpose_limitation",
+            "data_fiduciary_data_processor_role_clarity",
+            "strict_purpose_limitation_and_lawful_instruction_control",
             "adequate_security_safeguards",
-            "breach_notification_sla",
-            "dsr_assistance",
-            "subprocessing_restrictions",
-            "deletion_or_return_on_termination",
-            "audit_rights_and_regulator_access"
+            "personal_data_breach_notification_and_incident_cooperation",
+            "data_principal_rights_and_complaint_handling_assistance",
+            "sub_processing_restrictions",
+            "data_deletion_return_and_cessation_of_processing",
+            "cross_border_transfer_and_offshore_access_restrictions",
+            "audit_rights_evidence_access_and_regulatory_cooperation",
+            "data_accuracy_correction_and_rectification_support",
+            "data_localisation_processing_location_and_sector_specific_data_residency_compliance"
         ],
-        "processing_time_ms": 80173.55,
+        "processing_time_ms": 43588.64,
         "llm_used": true,
-        "analysis_version": "v1"
+        "analysis_version": "v3",
+        "analysis_context": {
+            "decision_affecting_processing": null,
+            "onward_disclosure_related": null,
+            "financial_sector_mode": true,
+            "regulated_entity_type": null
+        }
     },
     "summary": {
-        "controls_complete": 1,
-        "controls_partial": 6,
+        "controls_complete": 0,
+        "controls_partial": 11,
         "controls_missing": 0,
         "high_risk_controls": [
-            "strict_purpose_limitation",
+            "data_fiduciary_data_processor_role_clarity",
+            "strict_purpose_limitation_and_lawful_instruction_control",
             "adequate_security_safeguards",
-            "breach_notification_sla",
-            "subprocessing_restrictions"
+            "personal_data_breach_notification_and_incident_cooperation",
+            "sub_processing_restrictions",
+            "cross_border_transfer_and_offshore_access_restrictions",
+            "audit_rights_evidence_access_and_regulatory_cooperation",
+            "data_localisation_processing_location_and_sector_specific_data_residency_compliance"
         ]
     },
     "controls": [
         {
-            "control_id": "strict_purpose_limitation",
-            "title": "Strict Purpose Limitation",
+            "control_id": "data_fiduciary_data_processor_role_clarity",
+            "title": "Data Fiduciary / Data Processor Role Clarity",
             "status": "partial",
-            "confidence": 0.57,
+            "confidence": 0.74,
             "found_elements": [
-                "processing only on documented or written instructions of the bank",
-                "processing only for agreed services or on behalf of the bank"
+                "organization is the data fiduciary or equivalent principal controller",
+                "vendor acts only as processor or equivalent service provider on behalf of the organization under contract",
+                "vendor cannot determine the purpose or means of processing independently",
+                "processing relationship is tied to a written contract",
+                "vendor must follow documented instructions"
             ],
             "missing_elements": [
-                "no vendor secondary use of personal data",
-                "no internal use for analytics, improvement, or model training without approval"
+                "vendor cannot continue, expand, repurpose, monetize, own, or claim proprietary rights over personal data"
             ],
             "matched_clauses": [
-                "2. Definitions\nFor the purposes of this Agreement:\n“Bank Data” means all records, files, reports, account-level information, transaction metadata, logs, customer\ninformation, employee information, operational data, and any Personal Data or confidential information\nprocessed by Nimbus Ledger Technologies Private Limited on behalf of Konkan Urban Bank Limited.\n“Personal Data” means any data about an identified or identifiable natural person processed under this\nAgreement.\n“Services” means the hosted software platform, implementation support, reconciliation workflows, case\nmanagement tools, support desk functions, managed file exchange capability, reporting services, and related\ntechnical support provided under this Agreement.",
-                "4.1 Nimbus Ledger Technologies Private Limited shall process Personal Data and Bank Data solely on behalf of",
-                "documented instructions communicated in writing, including instructions issued through signed statements of\nwork, support tickets, implementation records, or authorized email communications."
+                "workflow software, request intake tools, internal case management functionality, secure document upload\ncapabilities, and reporting support for the Bank’s customer servicing operations, branch operations, and\ncentralized processing teams. Northshore Matrix Technologies Private Limited shall provide the Services in\naccordance with this Agreement and the lawful written instructions of the Bank.\n2. Definitions\nFor the purposes of this Agreement:\n“Bank Data” means all data, records, forms, files, communications, reports, images, logs, metadata, accountrelated information, employee information, operational records, and any Personal Data processed by\nNorthshore Matrix Technologies Private Limited in connection with the Services.\n“Personal Data” means any data relating to an identified or identifiable natural person processed by\nNorthshore Matrix Technologies Private Limited on behalf of Deccan Coast Bank Limited.\n“Services” means the hosted software platform, support services, storage, workflow routing, reporting,\nmaintenance, technical support, and related services provided under this Agreement."
             ],
             "evidence_snippets": [
-                "\"documented instructions communicated in writing, including instructions issued through signed statements of work, support tickets, implementation records, or authorized email communications.\" (seg_012)",
-                "\"process Personal Data and Bank Data solely on behalf of\" (seg_011)",
-                "\"processed by Nimbus Ledger Technologies Private Limited on behalf of Konkan Urban Bank Limited\" (seg_006)"
+                "Northshore Matrix Technologies Private Limited shall provide the Services in accordance with this Agreement and the lawful written instructions of the Bank.",
+                "“Personal Data” means any data relating to an identified or identifiable natural person processed by Northshore Matrix Technologies Private Limited on behalf of Deccan Coast Bank Limited."
             ],
             "red_flags": [],
             "contradictions": [],
-            "reason": "The clauses explicitly tie processing to written bank instructions and to acting on behalf of the bank, satisfying two mandatory requirements. No language limits secondary or internal uses, so those mandatory elements are missing. No optional prohibitions or red‑flag/contradictory language are present.",
+            "reason": "Relevant clauses were found, but one or more mandatory elements remain missing or unsupported: vendor cannot continue, expand, repurpose, monetize, own, or claim proprietary rights over personal data.",
+            "applicability": null,
             "operational_impact": null,
-            "recommended_fix_summary": "Add or strengthen language covering: no vendor secondary use of personal data.",
-            "banking_regulatory_relevance": "Relevant for bank oversight, vendor risk, and regulatory defensibility."
+            "recommended_fix_summary": "Add or strengthen language covering: vendor cannot continue, expand, repurpose, monetize, own, or claim proprietary rights over personal data.",
+            "banking_regulatory_relevance": "Relevant for bank oversight, outsourcing risk, and regulatory defensibility."
+        },
+        {
+            "control_id": "strict_purpose_limitation_and_lawful_instruction_control",
+            "title": "Strict Purpose Limitation and Lawful Instruction Control",
+            "status": "partial",
+            "confidence": 0.56,
+            "found_elements": [
+                "processing is limited to the specified purpose, agreed services, and documented instructions or lawful basis determined by the organization",
+                "secondary, incompatible, or unauthorized use is prohibited, including analytics, profiling, advertising, internal improvement, benchmarking, and model training unless separately approved in writing and legally permitted",
+                "vendor must notify if an instruction appears unlawful",
+                "contract expressly prohibits ai or model training use"
+            ],
+            "missing_elements": [
+                "vendor must preserve notices, consent records, and processing authorization artefacts",
+                "vendor must notify the organization and stop changed-scope or changed-lawful-basis processing unless separately instructed in writing"
+            ],
+            "matched_clauses": [
+                "4.1 Northshore Matrix Technologies Private Limited shall process Personal Data and Bank Data solely on behalf of Deccan Coast Bank Limited and only for the purpose of providing the Services and carrying out the Bank’s documented instructions communicated in writing, including through statements of work, implementation records, approved support tickets, and authorized email communications.",
+                "4.2 Northshore Matrix Technologies Private Limited shall not sell, commercialize, disclose, share, license, or otherwise exploit Personal Data or Bank Data for its own independent commercial purposes or for the benefit of any third party.",
+                "4.3 Northshore Matrix Technologies Private Limited shall not use Personal Data or Bank Data to train, finetune, validate, benchmark, or otherwise improve any artificial intelligence, machine learning, recommendation, large language, or statistical model for itself or for any third party.",
+                "4.4 Northshore Matrix Technologies Private Limited may review internal system performance information, service usage patterns, feature adoption trends, support interactions, workflow analytics, and platform telemetry generated in the course of the Services in order to improve support responsiveness, feature design, product stability, and operational efficiency, provided that such review is undertaken internally and in accordance with applicable law."
+            ],
+            "evidence_snippets": [
+                "4.1 Northshore Matrix Technologies Private Limited shall process Personal Data and Bank Data solely on behalf of Deccan Coast Bank Limited and only for the purpose of providing the Services and carrying out the Bank’s documented instructions communicated in writing...",
+                "4.2 Northshore Matrix Technologies Private Limited shall not sell, commercialize, disclose, share, license, or otherwise exploit Personal Data or Bank Data for its own independent commercial purposes...",
+                "4.3 Northshore Matrix Technologies Private Limited shall not use Personal Data or Bank Data to train, finetune, validate, benchmark, or otherwise improve any artificial intelligence, machine learning... model...",
+                "4.4 Northshore Matrix Technologies Private Limited may review internal system performance information... workflow analytics... in order to improve support responsiveness, feature design, product stability, and operational efficiency...",
+                "4.5 If Northshore Matrix Technologies Private Limited believes that any instruction of the Bank may violate applicable law, it shall notify the Bank in writing...",
+                "Northshore Matrix Technologies Private Limited shall process Personal Data and Bank Data solely on behalf of Deccan Coast Bank Limited and only for the purpose of providing the Services and carrying out the Bank’s documented instructions communicated in writing..."
+            ],
+            "red_flags": [
+                "internal improvement or analytics carve out"
+            ],
+            "contradictions": [],
+            "reason": "Relevant clauses were found, but one or more mandatory elements remain missing or unsupported: vendor must preserve notices, consent records, and processing authorization artefacts.",
+            "applicability": null,
+            "operational_impact": null,
+            "recommended_fix_summary": "Add or strengthen language covering: vendor must preserve notices, consent records, and processing authorization artefacts.",
+            "banking_regulatory_relevance": "Relevant for bank oversight, outsourcing risk, and regulatory defensibility."
         },
         {
             "control_id": "adequate_security_safeguards",
             "title": "Adequate Security Safeguards",
             "status": "partial",
-            "confidence": 0.77,
+            "confidence": 0.65,
             "found_elements": [
-                "technical and or organizational safeguards",
-                "protection against unauthorized access, loss, misuse, or breach",
-                "encryption at rest",
-                "encryption in transit",
-                "access controls or least privilege",
-                "multi-factor authentication",
-                "logging and monitoring",
-                "security testing or certifications"
+                "reasonable security safeguards are required to prevent personal data breach",
+                "encryption, obfuscation, masking, or tokenization controls are required where appropriate",
+                "access controls over computer resources are required",
+                "logs, monitoring, and review are required for detecting unauthorized access",
+                "backup or continued-processing arrangements are required",
+                "processor security obligations and technical and organizational measures are required"
             ],
             "missing_elements": [
-                "general security commitment"
+                "relevant logs and data are retained for at least one year where required for detection, investigation, remediation, and continuity"
             ],
             "matched_clauses": [
-                "5.3 Nimbus Ledger Technologies Private Limited shall use appropriate access controls and internal procedures\nto prevent unauthorized use or disclosure of Bank Data.",
-                "6.3 Nimbus Ledger Technologies Private Limited shall encrypt Bank Data in transit over public or shared\nnetworks using current industry-standard cryptographic protocols and shall encrypt Bank Data at rest within\nproduction databases, object storage, and backup repositories using strong encryption mechanisms managed\nunder documented key-management procedures.",
-                "6.4 Nimbus Ledger Technologies Private Limited shall maintain role-based access controls, least-privilege\naccess assignments, multi-factor authentication for privileged access, centralized logging of administrative"
+                "6.2 Such program shall include administrative, technical, organizational, and physical safeguards designed to\nprotect Bank Data against unauthorized access, disclosure, destruction, loss, alteration, and misuse.",
+                "6.3 Bank Data transmitted over public networks shall be encrypted in transit using current industry-standard\nencryption.",
+                "6.4 Northshore Matrix Technologies Private Limited shall maintain role-based access controls, authentication\nmechanisms, privileged-access review procedures, centralized logging of administrative actions, secure\nconfiguration standards, malware controls, and vulnerability management practices.",
+                "13.1 Northshore Matrix Technologies Private Limited shall maintain business continuity and disaster recovery\narrangements appropriate to the criticality of the Services."
             ],
             "evidence_snippets": [
-                "use appropriate access controls ... to prevent unauthorized use or disclosure of Bank Data.",
-                "encrypt Bank Data in transit ... and encrypt Bank Data at rest ... using strong encryption mechanisms",
-                "maintain role-based access controls, least-privilege access assignments, multi-factor authentication for privileged access, centralized logging",
-                "maintains an information security management system aligned to ISO 27001 principles"
+                "6.2 Such program shall include administrative, technical, organizational, and physical safeguards designed to\nprotect Bank Data against unauthorized access, disclosure, destruction, loss, alteration, and misuse.",
+                "6.3 Bank Data transmitted over public networks shall be encrypted in transit using current industry-standard\nencryption.",
+                "6.4 Northshore Matrix Technologies Private Limited shall maintain role-based access controls, authentication\nmechanisms, privileged-access review procedures, centralized logging of administrative actions, secure\nconfiguration standards, malware controls, and vulnerability management practices.",
+                "13.1 Northshore Matrix Technologies Private Limited shall maintain business continuity and disaster recovery\narrangements appropriate to the criticality of the Services.",
+                "Such program shall include administrative, technical, organizational, and physical safeguards designed to protect Bank Data against unauthorized access, disclosure, destruction, loss, alteration, and misuse.",
+                "Bank Data transmitted over public networks shall be encrypted in transit using current industry-standard encryption."
+            ],
+            "red_flags": [
+                "no one-year log retention coverage"
+            ],
+            "contradictions": [],
+            "reason": "Relevant clauses were found, but one or more mandatory elements remain missing or unsupported: relevant logs and data are retained for at least one year where required for detection, investigation, remediation, and continuity.",
+            "applicability": null,
+            "operational_impact": null,
+            "recommended_fix_summary": "Add or strengthen language covering: relevant logs and data are retained for at least one year where required for detection, investigation, remediation, and continuity.",
+            "banking_regulatory_relevance": "Relevant for bank oversight, outsourcing risk, and regulatory defensibility."
+        },
+        {
+            "control_id": "personal_data_breach_notification_and_incident_cooperation",
+            "title": "Personal Data Breach Notification and Incident Cooperation",
+            "status": "partial",
+            "confidence": 0.53,
+            "found_elements": [
+                "vendor must notify the organization without delay upon actual or suspected personal data breach or security incident",
+                "vendor must preserve relevant logs, records, evidence, and affected data",
+                "hard notification deadline in hours"
+            ],
+            "missing_elements": [
+                "vendor must provide ongoing information and updates sufficient for the organization's reporting obligations",
+                "vendor must not suppress, alter, or delete relevant evidence except as strictly required for containment and recovery",
+                "vendor must fully cooperate in investigation, impact assessment, containment, remediation, recovery, root-cause analysis, recurrence prevention, and required notifications"
+            ],
+            "matched_clauses": [
+                "7.1 Northshore Matrix Technologies Private Limited shall notify Deccan Coast Bank Limited immediately, and in\nany event no later than twelve hours after becoming aware of a Security Incident affecting Bank Data.\n7.4 Northshore Matrix Technologies Private Limited shall cooperate with Deccan Coast Bank Limited in relation\nIncident, contain its effects, mitigate ongoing harm, preserve relevant evidence, and provide further"
+            ],
+            "evidence_snippets": [
+                "7.1 Northshore Matrix Technologies Private Limited shall notify Deccan Coast Bank Limited immediately, and in\nany event no later than twelve hours after becoming aware of a Security Incident affecting Bank Data.",
+                "7.4 Northshore Matrix Technologies Private Limited shall cooperate with Deccan Coast Bank Limited in relation\nIncident, contain its effects, mitigate ongoing harm, preserve relevant evidence, and provide further",
+                "Northshore Matrix Technologies Private Limited shall notify Deccan Coast Bank Limited immediately, and in any event no later than twelve hours after becoming aware of a Security Incident affecting Bank Data.",
+                "...preserve relevant evidence..."
             ],
             "red_flags": [],
             "contradictions": [],
-            "reason": "The clauses provide specific technical and organizational safeguards and address unauthorized access, but lack an overarching general security commitment.",
+            "reason": "Relevant clauses were found, but one or more mandatory elements remain missing or unsupported: vendor must provide ongoing information and updates sufficient for the organization's reporting obligations.",
+            "applicability": null,
             "operational_impact": null,
-            "recommended_fix_summary": "Add or strengthen language covering: general security commitment.",
-            "banking_regulatory_relevance": "Relevant for bank oversight, vendor risk, and regulatory defensibility."
+            "recommended_fix_summary": "Add or strengthen language covering: vendor must provide ongoing information and updates sufficient for the organization's reporting obligations.",
+            "banking_regulatory_relevance": "Relevant for bank oversight, outsourcing risk, and regulatory defensibility."
         },
         {
-            "control_id": "breach_notification_sla",
-            "title": "Breach Notification SLAs",
+            "control_id": "data_principal_rights_and_complaint_handling_assistance",
+            "title": "Data Principal Rights and Complaint-Handling Assistance",
             "status": "partial",
-            "confidence": 0.61,
+            "confidence": 0.2,
             "found_elements": [
-                "explicit notification obligation for incidents or breaches",
-                "trigger based on discovery or awareness of the incident",
-                "defined timeline or very tight timing language",
-                "immediate preliminary notice"
+                "vendor may not respond directly without organization approval except where required by law",
+                "search retrieval export or suppression support is covered"
             ],
             "missing_elements": [
-                "vendor cooperation or support after notice"
+                "vendor must assist with data principal requests, complaints, queries, and rights exercises for data processed through its systems or services",
+                "assistance covers access, correction, completion, updating, erasure, consent-withdrawal-related changes, grievance handling, and other actions needed for legal compliance",
+                "assistance must be provided within timelines specified by the organization and fast enough for legal or regulatory deadlines",
+                "assistance extends to nominee-based rights exercise in case of death or incapacity"
             ],
             "matched_clauses": [
-                "7.1 Nimbus Ledger Technologies Private Limited shall notify Konkan Urban Bank Limited immediately, and in\nany event no later than six hours after becoming aware of any Security Incident affecting Bank Data."
+                "8. Assistance with Customer and Data Principal Requests\n8.1 Northshore Matrix Technologies Private Limited shall assist Deccan Coast Bank Limited in responding to\nrequests from customers and other data principals relating to access to Personal Data, correction of inaccurate\nPersonal Data, and deletion of Personal Data processed through the Services.\n8.2 If Northshore Matrix Technologies Private Limited receives such a request directly, it shall notify the Bank\nwithout undue delay and shall not respond directly except on the written instruction of the Bank or where\nrequired by law.\n8.3 Northshore Matrix Technologies Private Limited shall use reasonable efforts to search for, retrieve, correct,\nand delete relevant Personal Data within the hosted environment where such action is required by the Bank."
             ],
             "evidence_snippets": [
-                "shall notify Konkan Urban Bank Limited immediately, and in any event no later than six hours after becoming aware of any Security Incident affecting Bank Data"
+                "8. Assistance with Customer and Data Principal Requests\n8.1 Northshore Matrix Technologies Private Limited shall assist Deccan Coast Bank Limited in responding to\nrequests from customers and other data principals relating to access to Personal Data, correction of inaccurate\nPersonal Data, and deletion of Personal Data processed through the Services.\n8.2 If Northshore Matrix Technologies Private Limited receives such a request directly, it shall notify the Bank\nwithout undue delay and shall not respond directly except on the written instruction of the Bank or where\nrequired by law.\n8.3 Northshore Matrix Technologies Private Limited shall use reasonable efforts to search for, retrieve, correct,\nand delete relevant Personal Data within the hosted environment where such action is required by the Bank."
             ],
             "red_flags": [
-                "promptly",
-                "without undue delay"
+                "assistance limited to reasonable efforts only",
+                "no express timeline support",
+                "complaints or grievance handling not clearly covered"
             ],
             "contradictions": [],
-            "reason": "The clause in seg_032 satisfies notification, discovery trigger, and a six‑hour deadline, meeting three mandatory requirements and includes the word 'immediately' as an optional strengthener. No provision addresses post‑notice cooperation, so that mandatory element is missing. No downgrade language or contradictory terms are present.",
+            "reason": "Relevant clauses were found, but one or more mandatory elements remain missing or unsupported: vendor must assist with data principal requests, complaints, queries, and rights exercises for data processed through its systems or services.",
+            "applicability": null,
             "operational_impact": null,
-            "recommended_fix_summary": "Add or strengthen language covering: vendor cooperation or support after notice.",
-            "banking_regulatory_relevance": "Relevant for bank oversight, vendor risk, and regulatory defensibility."
+            "recommended_fix_summary": "Add or strengthen language covering: vendor must assist with data principal requests, complaints, queries, and rights exercises for data processed through its systems or services.",
+            "banking_regulatory_relevance": "Relevant for bank oversight, outsourcing risk, and regulatory defensibility."
         },
         {
-            "control_id": "dsr_assistance",
-            "title": "Assistance with Data Principal Rights (DSRs)",
+            "control_id": "sub_processing_restrictions",
+            "title": "Sub-Processing Restrictions",
             "status": "partial",
-            "confidence": 0.72,
+            "confidence": 0.5,
             "found_elements": [
-                "assist with access requests",
-                "assist with correction or rectification",
-                "assist with deletion or erasure",
-                "applies within vendor systems or hosted environments",
-                "export or search support"
+                "vendor remains fully responsible for the acts, omissions, failures, and breaches of subprocessors",
+                "subprocessor list disclosure is required"
             ],
             "missing_elements": [
-                "remove weakening language: reasonable assistance"
+                "vendor may not appoint, engage, replace, or continue any subprocessor or downstream processing party without prior written authorization",
+                "subprocessors must be bound by equivalent obligations covering data protection, confidentiality, security, purpose limitation, deletion, cooperation, and compliance"
             ],
             "matched_clauses": [
-                "8.1 Nimbus Ledger Technologies Private Limited shall, taking into account the nature of the processing and the\ninformation available to it, provide reasonable assistance to Konkan Urban Bank Limited in responding to\ncustomer and data principal requests relating to access, correction, rectification, update, or deletion of\nPersonal Data processed in connection with the Services.",
-                "12.5 Nimbus Ledger Technologies Private Limited shall, upon written request of Konkan Urban Bank Limited,\nprovide a written confirmation signed by an authorized officer stating that deletion from active systems has\nbeen completed.",
-                "8.3 Nimbus Ledger Technologies Private Limited shall make reasonable efforts to search for, retrieve, correct,\nand delete relevant Personal Data within the hosted environment to the extent necessary for the Bank to\ncomply with applicable law."
+                "9.3 Northshore Matrix Technologies Private Limited shall remain fully responsible and liable to Deccan Coast\nBank Limited for the acts and omissions of any approved Sub-processor.",
+                "9.4 Northshore Matrix Technologies Private Limited shall maintain and provide to the Bank, on request, an upto-date list of approved Sub-processors engaged in connection with the Services."
             ],
             "evidence_snippets": [
-                "provide reasonable assistance ... in responding to ... requests relating to access, correction, rectification, ... or deletion of Personal Data",
-                "make reasonable efforts to search for, retrieve, correct, and delete relevant Personal Data within the hosted environment",
-                "provide a written confirmation ... that deletion from active systems has been completed"
+                "9.3 Northshore Matrix Technologies Private Limited shall remain fully responsible and liable to Deccan Coast\nBank Limited for the acts and omissions of any approved Sub-processor.",
+                "9.4 Northshore Matrix Technologies Private Limited shall maintain and provide to the Bank, on request, an upto-date list of approved Sub-processors engaged in connection with the Services.",
+                "Northshore Matrix Technologies Private Limited shall remain fully responsible and liable to Deccan Coast\nBank Limited for the acts and omissions of any approved Sub-processor."
             ],
-            "red_flags": [
-                "reasonable assistance",
-                "reasonable efforts"
-            ],
+            "red_flags": [],
             "contradictions": [],
-            "reason": "The clauses contain explicit assistance for access, correction, and deletion (seg_040) and specify actions within the hosted environment (seg_042), satisfying all mandatory elements. Seg_042 also mentions searching for data, matching the optional export/search support strengthener. However, the language is qualified by \"reasonable\" assistance/efforts, which are downgrade triggers and flagged as red flags.",
+            "reason": "Relevant clauses were found, but one or more mandatory elements remain missing or unsupported: vendor may not appoint, engage, replace, or continue any subprocessor or downstream processing party without prior written authorization.",
+            "applicability": null,
             "operational_impact": null,
-            "recommended_fix_summary": "Add or strengthen language covering: remove weakening language: reasonable assistance.",
-            "banking_regulatory_relevance": "Relevant for bank oversight, vendor risk, and regulatory defensibility."
+            "recommended_fix_summary": "Add or strengthen language covering: vendor may not appoint, engage, replace, or continue any subprocessor or downstream processing party without prior written authorization.",
+            "banking_regulatory_relevance": "Relevant for bank oversight, outsourcing risk, and regulatory defensibility."
         },
         {
-            "control_id": "subprocessing_restrictions",
-            "title": "Sub-processing Restrictions",
+            "control_id": "data_deletion_return_and_cessation_of_processing",
+            "title": "Data Deletion / Return and Cessation of Processing",
             "status": "partial",
-            "confidence": 0.35,
+            "confidence": 0.3,
             "found_elements": [],
             "missing_elements": [
-                "prior written authorization or approval of the bank",
-                "no unrestricted sub-processing",
-                "equivalent obligations imposed on the sub-processor",
-                "vendor remains responsible for sub-processors"
+                "vendor must cease processing on termination, instruction, consent withdrawal where relevant, completion of purpose, or when processing is no longer legally permitted",
+                "cessation must occur within a reasonable time and within a clearly stated maximum period",
+                "vendor must securely delete or return personal data and copies under its control in accordance with the organization's instructions",
+                "continued retention is limited to what is legally required and further unauthorized use is prohibited during retention",
+                "vendor must delete retained data once retention is no longer legally required",
+                "vendor must provide written confirmation, certification, or equivalent evidence of deletion, return, or restricted retention where required by the organization"
             ],
             "matched_clauses": [],
             "evidence_snippets": [],
             "red_flags": [],
             "contradictions": [],
-            "reason": "No relevant clauses were retrieved for this control.",
+            "reason": "Relevant clauses were found, but one or more mandatory elements remain missing or unsupported: vendor must cease processing on termination, instruction, consent withdrawal where relevant, completion of purpose, or when processing is no longer legally permitted.",
+            "applicability": null,
             "operational_impact": null,
-            "recommended_fix_summary": "Add or strengthen language covering: prior written authorization or approval of the bank.",
-            "banking_regulatory_relevance": "Relevant for bank oversight, vendor risk, and regulatory defensibility."
+            "recommended_fix_summary": "Add or strengthen language covering: vendor must cease processing on termination, instruction, consent withdrawal where relevant, completion of purpose, or when processing is no longer legally permitted.",
+            "banking_regulatory_relevance": "Relevant for bank oversight, outsourcing risk, and regulatory defensibility."
         },
         {
-            "control_id": "deletion_or_return_on_termination",
-            "title": "Data Deletion / Return upon Termination",
+            "control_id": "cross_border_transfer_and_offshore_access_restrictions",
+            "title": "Cross-Border Transfer and Offshore Access Restrictions",
             "status": "partial",
-            "confidence": 0.21,
+            "confidence": 0.3,
+            "found_elements": [],
+            "missing_elements": [
+                "vendor is prohibited from transferring, hosting, mirroring, replicating, backing up, disclosing, accessing, or otherwise making personal data available outside India or from permitting remote access from outside India unless expressly authorized in writing and legally permitted",
+                "vendor may not self-authorize offshore processing, hosting, support access, or onward transfer arrangements",
+                "any approved offshore arrangement remains subject to contractual controls and applicable government or competent-authority requirements"
+            ],
+            "matched_clauses": [],
+            "evidence_snippets": [],
+            "red_flags": [],
+            "contradictions": [],
+            "reason": "Relevant clauses were found, but one or more mandatory elements remain missing or unsupported: vendor is prohibited from transferring, hosting, mirroring, replicating, backing up, disclosing, accessing, or otherwise making personal data available outside India or from permitting remote access from outside India unless expressly authorized in writing and legally permitted.",
+            "applicability": null,
+            "operational_impact": null,
+            "recommended_fix_summary": "Add or strengthen language covering: vendor is prohibited from transferring, hosting, mirroring, replicating, backing up, disclosing, accessing, or otherwise making personal data available outside India or from permitting remote access from outside India unless expressly authorized in writing and legally permitted.",
+            "banking_regulatory_relevance": "Relevant for bank oversight, outsourcing risk, and regulatory defensibility."
+        },
+        {
+            "control_id": "audit_rights_evidence_access_and_regulatory_cooperation",
+            "title": "Audit Rights, Evidence Access, and Regulatory Cooperation",
+            "status": "partial",
+            "confidence": 0.3,
+            "found_elements": [],
+            "missing_elements": [
+                "organization has meaningful and enforceable rights to assess and verify compliance, not limited to document review only and not subject to vendor veto or open-ended mutual-agreement conditions without workable fallback",
+                "vendor must provide access to records, logs, policies, control evidence, systems, personnel, and relevant subprocessor information needed to verify compliance",
+                "confidentiality or commercial sensitivity may not block audit scope and must instead be handled through confidentiality undertakings or controlled access",
+                "vendor must cooperate with lawful regulatory or supervisory requests connected to the personal data processed under the agreement"
+            ],
+            "matched_clauses": [
+                "workflow software, request intake tools, internal case management functionality, secure document upload\ncapabilities, and reporting support for the Bank’s customer servicing operations, branch operations, and\ncentralized processing teams. Northshore Matrix Technologies Private Limited shall provide the Services in\naccordance with this Agreement and the lawful written instructions of the Bank.\n2. Definitions\nFor the purposes of this Agreement:\n“Bank Data” means all data, records, forms, files, communications, reports, images, logs, metadata, accountrelated information, employee information, operational records, and any Personal Data processed by\nNorthshore Matrix Technologies Private Limited in connection with the Services.\n“Personal Data” means any data relating to an identified or identifiable natural person processed by\nNorthshore Matrix Technologies Private Limited on behalf of Deccan Coast Bank Limited.\n“Services” means the hosted software platform, support services, storage, workflow routing, reporting,\nmaintenance, technical support, and related services provided under this Agreement.",
+                "destruction, loss, misuse, or unavailability of Bank Data or systems used to process Bank Data.",
+                "make available to the Bank an export of Bank Data from active systems in a commonly readable electronic\nformat.\n12.3 Following such export, Northshore Matrix Technologies Private Limited shall securely delete Bank Data\nfrom active systems under its control.\n12.4 Backup media and disaster recovery copies containing Bank Data that cannot be immediately deleted in\nthe ordinary course may be retained until overwritten, recycled, or naturally expired in accordance with\nNorthshore Matrix Technologies Private Limited’s standard retention processes, provided that such retained",
+                "12. Return and Deletion of Bank Data\nmake available to the Bank an export of Bank Data from active systems in a commonly readable electronic\nformat.\n12.3 Following such export, Northshore Matrix Technologies Private Limited shall securely delete Bank Data\nfrom active systems under its control.\n12.4 Backup media and disaster recovery copies containing Bank Data that cannot be immediately deleted in\nthe ordinary course may be retained until overwritten, recycled, or naturally expired in accordance with\nNorthshore Matrix Technologies Private Limited’s standard retention processes, provided that such retained"
+            ],
+            "evidence_snippets": [],
+            "red_flags": [],
+            "contradictions": [],
+            "reason": "Relevant clauses were found, but one or more mandatory elements remain missing or unsupported: organization has meaningful and enforceable rights to assess and verify compliance, not limited to document review only and not subject to vendor veto or open-ended mutual-agreement conditions without workable fallback.",
+            "applicability": null,
+            "operational_impact": null,
+            "recommended_fix_summary": "Add or strengthen language covering: organization has meaningful and enforceable rights to assess and verify compliance, not limited to document review only and not subject to vendor veto or open-ended mutual-agreement conditions without workable fallback.",
+            "banking_regulatory_relevance": "Relevant for bank oversight, outsourcing risk, and regulatory defensibility."
+        },
+        {
+            "control_id": "data_accuracy_correction_and_rectification_support",
+            "title": "Data Accuracy, Correction, and Rectification Support",
+            "status": "partial",
+            "confidence": 0.72,
             "found_elements": [
-                "covers backups or copies"
+                "vendor must support update, correction, completion, synchronization, suppression, or erasure of inaccurate, incomplete, misleading, stale, or unauthorized data within its systems",
+                "vendor must support completeness, accuracy, and consistency for decision-affecting or onward-disclosed data",
+                "vendor must support corresponding corrective action across subprocessors or linked processing environments where applicable"
             ],
             "missing_elements": [
-                "return or delete obligation exists",
-                "applies on termination, expiry, or bank instruction",
-                "covers personal data held by the vendor",
-                "includes timing or completion requirement"
+                "remove weakening language: support limited to reasonable efforts only"
             ],
             "matched_clauses": [
-                "12.4 Bank Data contained in backups or disaster recovery media that cannot be immediately deleted in the\nordinary course may be retained until such media is recycled, overwritten, or naturally expires under the\nvendor’s standard backup retention schedule, provided that such retained data remains subject to\nconfidentiality and security protections no less protective than those set out in this Agreement."
+                "8.1 Northshore Matrix Technologies Private Limited shall assist Deccan Coast Bank Limited in responding to\nrequests from customers and other data principals relating to access to Personal Data, correction of inaccurate\nPersonal Data, and deletion of Personal Data processed through the Services.",
+                "8.3 Northshore Matrix Technologies Private Limited shall use reasonable efforts to search for, retrieve, correct,\nand delete relevant Personal Data within the hosted environment where such action is required by the Bank."
             ],
             "evidence_snippets": [
-                "\"Bank Data contained in backups or disaster recovery media that cannot be immediately deleted ... may be retained until such media is recycled, overwritten, or naturally expires under the vendor’s standard backup retention schedule\""
+                "8.1 Northshore Matrix Technologies Private Limited shall assist Deccan Coast Bank Limited in responding to\nrequests from customers and other data principals relating to access to Personal Data, correction of inaccurate\nPersonal Data, and deletion of Personal Data processed through the Services.",
+                "8.3 Northshore Matrix Technologies Private Limited shall use reasonable efforts to search for, retrieve, correct,\nand delete relevant Personal Data within the hosted environment where such action is required by the Bank.",
+                "Northshore Matrix Technologies Private Limited shall assist Deccan Coast Bank Limited in responding to requests from customers and other data principals relating to access to Personal Data, correction of inaccurate Personal Data, and deletion of Personal Data processed through the Services.",
+                "Northshore Matrix Technologies Private Limited shall use reasonable efforts to search for, retrieve, correct, and delete relevant Personal Data within the hosted environment where such action is required by the Bank."
             ],
             "red_flags": [
-                "retention tied to vendor's backup schedule rather than a termination deletion deadline",
-                "no explicit timeline for deletion or return",
-                "allows data to remain until media is naturally expires, which may be indefinite"
+                "support limited to reasonable efforts only",
+                "no linked-system or downstream propagation support"
             ],
             "contradictions": [],
-            "reason": "The clause discusses backup retention but does not impose a return or deletion obligation upon contract termination, lacks timing, and relies on vendor policy, leaving gaps in mandatory requirements.",
+            "reason": "Relevant clauses were found, but qualifying language still weakens the control: support limited to reasonable efforts only.",
+            "applicability": "Scored on baseline contract text without elevated decision-affecting or onward-disclosure context.",
             "operational_impact": null,
-            "recommended_fix_summary": "Add or strengthen language covering: return or delete obligation exists.",
-            "banking_regulatory_relevance": "Relevant for bank oversight, vendor risk, and regulatory defensibility."
+            "recommended_fix_summary": "Add or strengthen language covering: remove weakening language: support limited to reasonable efforts only.",
+            "banking_regulatory_relevance": "Relevant for bank oversight, outsourcing risk, and regulatory defensibility."
         },
         {
-            "control_id": "audit_rights_and_regulator_access",
-            "title": "Audit Rights and Regulatory Access",
-            "status": "complete",
-            "confidence": 0.92,
-            "found_elements": [
-                "explicit bank audit right",
-                "vendor cooperation obligation",
-                "access to relevant records, systems, controls, or evidence",
-                "audit right is meaningful and not illusory",
-                "bank may use internal auditors",
-                "bank may use external auditors or appointed assessors",
-                "regulator or supervisory inspection support"
+            "control_id": "data_localisation_processing_location_and_sector_specific_data_residency_compliance",
+            "title": "Data Localisation / Processing Location and Sector-Specific Data Residency Compliance",
+            "status": "partial",
+            "confidence": 0.3,
+            "found_elements": [],
+            "missing_elements": [
+                "all covered data, logs, backups, recordings, derived data, support-access data, and metadata must be stored, hosted, mirrored, backed up, retained, routed, accessed, and processed only within India",
+                "the India-only obligation applies to subprocessors, cloud providers, support providers, affiliates, and downstream parties",
+                "offshore transfer, offshore subprocessors, offshore support access, foreign cloud-region usage, and remote access from outside India are prohibited absent separate documented approval",
+                "processing, hosting, backup, support-access, disaster-recovery, and cloud-region locations must be disclosed",
+                "prior written notification and approval are required before any location or arrangement change"
             ],
-            "missing_elements": [],
             "matched_clauses": [
-                "review, or inquiry by a banking regulator, supervisory authority, or other competent authority having\njurisdiction over Konkan Urban Bank Limited to the extent relevant to the Services or the processing of Bank\nData.",
-                "10.1 Konkan Urban Bank Limited, its internal auditors, statutory auditors, external professional advisers, and",
-                "availability, provide production support, and enable export of reports and case records on request."
+                "workflow software, request intake tools, internal case management functionality, secure document upload\ncapabilities, and reporting support for the Bank’s customer servicing operations, branch operations, and\ncentralized processing teams. Northshore Matrix Technologies Private Limited shall provide the Services in\naccordance with this Agreement and the lawful written instructions of the Bank.\n2. Definitions\nFor the purposes of this Agreement:\n“Bank Data” means all data, records, forms, files, communications, reports, images, logs, metadata, accountrelated information, employee information, operational records, and any Personal Data processed by\nNorthshore Matrix Technologies Private Limited in connection with the Services.\n“Personal Data” means any data relating to an identified or identifiable natural person processed by\nNorthshore Matrix Technologies Private Limited on behalf of Deccan Coast Bank Limited.\n“Services” means the hosted software platform, support services, storage, workflow routing, reporting,\nmaintenance, technical support, and related services provided under this Agreement."
             ],
             "evidence_snippets": [
-                "\"Konkan Urban Bank Limited, its internal auditors, statutory auditors, external professional advisers\" (seg_049)",
-                "\"shall cooperate with any lawful request, inspection, audit, ... by a banking regulator, supervisory authority\" (seg_054)",
-                "\"enable export of reports and case records on request\" (seg_010)"
+                "workflow software, request intake tools, internal case management functionality, secure document upload\ncapabilities, and reporting support for the Bank’s customer servicing operations, branch operations, and\ncentralized processing teams. Northshore Matrix Technologies Private Limited shall provide the Services in\naccordance with this Agreement and the lawful written instructions of the Bank.\n2. Definitions\nFor the purposes of this Agreement:\n“Bank Data” means all data, records, forms, files, communications, reports, images, logs, metadata, accountrelated information, employee information, operational records, and any Personal Data processed by\nNorthshore Matrix Technologies Private Limited in connection with the Services.\n“Personal Data” means any data relating to an identified or identifiable natural person processed by\nNorthshore Matrix Technologies Private Limited on behalf of Deccan Coast Bank Limited.\n“Services” means the hosted software platform, support services, storage, workflow routing, reporting,\nmaintenance, technical support, and related services provided under this Agreement."
             ],
             "red_flags": [],
             "contradictions": [],
-            "reason": "The clauses grant the bank and its internal/external auditors explicit audit rights, obligate the vendor to cooperate with lawful audit requests, provide rights to obtain relevant records and system evidence, and contain no limiting language that would render the audit right illusory. Optional strengtheners are present for internal/external auditors and regulator support.",
+            "reason": "Relevant clauses were found, but one or more mandatory elements remain missing or unsupported: all covered data, logs, backups, recordings, derived data, support-access data, and metadata must be stored, hosted, mirrored, backed up, retained, routed, accessed, and processed only within India.",
+            "applicability": "Financial-sector mode applied.",
             "operational_impact": null,
-            "recommended_fix_summary": null,
-            "banking_regulatory_relevance": null
+            "recommended_fix_summary": "Add or strengthen language covering: all covered data, logs, backups, recordings, derived data, support-access data, and metadata must be stored, hosted, mirrored, backed up, retained, routed, accessed, and processed only within India.",
+            "banking_regulatory_relevance": "Relevant for bank oversight, outsourcing risk, and regulatory defensibility."
         }
     ],
     "overall_assessment": {
         "risk_level": "high",
         "key_gaps": [
-            "Strict Purpose Limitation: no vendor secondary use of personal data",
-            "Adequate Security Safeguards: general security commitment",
-            "Breach Notification SLAs: vendor cooperation or support after notice",
-            "Assistance with Data Principal Rights (DSRs): remove weakening language: reasonable assistance",
-            "Sub-processing Restrictions: prior written authorization or approval of the bank"
+            "Data Fiduciary / Data Processor Role Clarity: vendor cannot continue, expand, repurpose, monetize, own, or claim proprietary rights over personal data",
+            "Strict Purpose Limitation and Lawful Instruction Control: vendor must preserve notices, consent records, and processing authorization artefacts",
+            "Adequate Security Safeguards: relevant logs and data are retained for at least one year where required for detection, investigation, remediation, and continuity",
+            "Personal Data Breach Notification and Incident Cooperation: vendor must provide ongoing information and updates sufficient for the organization's reporting obligations",
+            "Data Principal Rights and Complaint-Handling Assistance: vendor must assist with data principal requests, complaints, queries, and rights exercises for data processed through its systems or services",
+            "Sub-Processing Restrictions: vendor may not appoint, engage, replace, or continue any subprocessor or downstream processing party without prior written authorization"
         ],
         "recommended_next_actions": [
-            "Add or strengthen language covering: no vendor secondary use of personal data.",
-            "Add or strengthen language covering: general security commitment.",
-            "Add or strengthen language covering: vendor cooperation or support after notice.",
-            "Add or strengthen language covering: remove weakening language: reasonable assistance.",
-            "Add or strengthen language covering: prior written authorization or approval of the bank."
+            "Add or strengthen language covering: vendor cannot continue, expand, repurpose, monetize, own, or claim proprietary rights over personal data.",
+            "Add or strengthen language covering: vendor must preserve notices, consent records, and processing authorization artefacts.",
+            "Add or strengthen language covering: relevant logs and data are retained for at least one year where required for detection, investigation, remediation, and continuity.",
+            "Add or strengthen language covering: vendor must provide ongoing information and updates sufficient for the organization's reporting obligations.",
+            "Add or strengthen language covering: vendor must assist with data principal requests, complaints, queries, and rights exercises for data processed through its systems or services.",
+            "Add or strengthen language covering: vendor may not appoint, engage, replace, or continue any subprocessor or downstream processing party without prior written authorization."
         ]
     }
 }

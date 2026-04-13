@@ -1,323 +1,402 @@
 {
-    "request_id": "9d071eb5-f1e0-4ad0-ba1a-c115e5c0849c",
+    "request_id": "040e6312-6ae5-432d-a51d-ed8149f20e41",
     "document_meta": {
-        "file_name": "MASTER SERVICES AGREEMENT AND DATA PROCESSING TERMS.pdf",
+        "file_name": "SOFTWARE SERVICES AGREEMENT AND DATA HANDLING TERMS.pdf",
         "file_type": "pdf",
-        "pages": 6,
+        "pages": 5,
         "text_extraction_mode": "native_pdf",
         "ocr_used": false
     },
     "extraction_meta": {
-        "segments_created": 72,
+        "segments_created": 68,
         "annexures_detected": 0,
         "confidence": 0.95,
         "selected_controls": [
-            "strict_purpose_limitation",
+            "data_fiduciary_data_processor_role_clarity",
+            "strict_purpose_limitation_and_lawful_instruction_control",
             "adequate_security_safeguards",
-            "breach_notification_sla",
-            "dsr_assistance",
-            "subprocessing_restrictions",
-            "deletion_or_return_on_termination",
-            "audit_rights_and_regulator_access"
+            "personal_data_breach_notification_and_incident_cooperation",
+            "data_principal_rights_and_complaint_handling_assistance",
+            "sub_processing_restrictions",
+            "data_deletion_return_and_cessation_of_processing",
+            "cross_border_transfer_and_offshore_access_restrictions",
+            "audit_rights_evidence_access_and_regulatory_cooperation",
+            "data_accuracy_correction_and_rectification_support",
+            "data_localisation_processing_location_and_sector_specific_data_residency_compliance"
         ],
-        "processing_time_ms": 145476.64,
+        "processing_time_ms": 48215.09,
         "llm_used": true,
-        "analysis_version": "v2"
+        "analysis_version": "v3",
+        "analysis_context": {
+            "decision_affecting_processing": null,
+            "onward_disclosure_related": null,
+            "financial_sector_mode": true,
+            "regulated_entity_type": null
+        }
     },
     "summary": {
-        "controls_complete": 2,
-        "controls_partial": 4,
-        "controls_missing": 1,
+        "controls_complete": 0,
+        "controls_partial": 11,
+        "controls_missing": 0,
         "high_risk_controls": [
-            "strict_purpose_limitation",
-            "breach_notification_sla",
-            "subprocessing_restrictions",
-            "audit_rights_and_regulator_access"
+            "data_fiduciary_data_processor_role_clarity",
+            "strict_purpose_limitation_and_lawful_instruction_control",
+            "adequate_security_safeguards",
+            "personal_data_breach_notification_and_incident_cooperation",
+            "sub_processing_restrictions",
+            "cross_border_transfer_and_offshore_access_restrictions",
+            "audit_rights_evidence_access_and_regulatory_cooperation",
+            "data_localisation_processing_location_and_sector_specific_data_residency_compliance"
         ]
     },
     "controls": [
         {
-            "control_id": "strict_purpose_limitation",
-            "title": "Strict Purpose Limitation",
+            "control_id": "data_fiduciary_data_processor_role_clarity",
+            "title": "Data Fiduciary / Data Processor Role Clarity",
             "status": "partial",
-            "confidence": 0.83,
+            "confidence": 0.3,
+            "found_elements": [],
+            "missing_elements": [
+                "organization is the data fiduciary or equivalent principal controller",
+                "vendor acts only as processor or equivalent service provider on behalf of the organization under contract",
+                "vendor cannot determine the purpose or means of processing independently",
+                "vendor cannot continue, expand, repurpose, monetize, own, or claim proprietary rights over personal data"
+            ],
+            "matched_clauses": [],
+            "evidence_snippets": [],
+            "red_flags": [],
+            "contradictions": [],
+            "reason": "Relevant clauses were found, but one or more mandatory elements remain missing or unsupported: organization is the data fiduciary or equivalent principal controller.",
+            "applicability": null,
+            "operational_impact": null,
+            "recommended_fix_summary": "Add or strengthen language covering: organization is the data fiduciary or equivalent principal controller.",
+            "banking_regulatory_relevance": "Relevant for bank oversight, outsourcing risk, and regulatory defensibility."
+        },
+        {
+            "control_id": "strict_purpose_limitation_and_lawful_instruction_control",
+            "title": "Strict Purpose Limitation and Lawful Instruction Control",
+            "status": "partial",
+            "confidence": 0.44,
             "found_elements": [
-                "processing only on documented or written instructions of the bank",
-                "processing only for agreed services or on behalf of the bank",
-                "no vendor secondary use of personal data",
-                "no internal use for analytics, improvement, or model training without approval",
-                "vendor must notify the bank if an instruction appears unlawful",
-                "explicit prohibition on data monetization"
+                "processing is limited to the specified purpose, agreed services, and documented instructions or lawful basis determined by the organization",
+                "vendor must notify if an instruction appears unlawful",
+                "contract expressly prohibits ai or model training use"
             ],
             "missing_elements": [
-                "resolve contradiction: clause 4.5 allows internal improvement of services, contradicting the absolute prohibition in clause 4.3"
+                "secondary, incompatible, or unauthorized use is prohibited, including analytics, profiling, advertising, internal improvement, benchmarking, and model training unless separately approved in writing and legally permitted",
+                "vendor must preserve notices, consent records, and processing authorization artefacts",
+                "vendor must notify the organization and stop changed-scope or changed-lawful-basis processing unless separately instructed in writing"
             ],
             "matched_clauses": [
-                "documented instructions communicated by the Bank in writing, including by email, ticket, implementation\ndocument, or signed change request.\n4.2 Asteron Cloud Services Private Limited shall not sell, disclose, mine, profile, enrich, commercialize, or\notherwise use Personal Data for its own independent purposes.\n4.3 Asteron Cloud Services Private Limited shall not use Personal Data or Bank Data to train, fine-tune, validate,\nbenchmark, or otherwise improve any artificial intelligence, machine learning, or statistical model for itself or\nany third party.\n4.4 If Asteron Cloud Services Private Limited believes that an instruction received from the Bank infringes\napplicable law, it shall promptly notify the Bank in writing before carrying out that instruction, unless\nprohibited by law from doing so.\n4.5 Notwithstanding the foregoing, Asteron Cloud Services Private Limited may compile generalized service\nusage metrics and operational learnings to improve the performance, usability, and efficiency of its services,\nprovided that no customer-facing content is intentionally published.",
-                "4.1 Asteron Cloud Services Private Limited shall process Personal Data solely on behalf of Sahyadri Commercial\ndocumented instructions communicated by the Bank in writing, including by email, ticket, implementation\ndocument, or signed change request.\n4.2 Asteron Cloud Services Private Limited shall not sell, disclose, mine, profile, enrich, commercialize, or\notherwise use Personal Data for its own independent purposes.\n4.3 Asteron Cloud Services Private Limited shall not use Personal Data or Bank Data to train, fine-tune, validate,\nbenchmark, or otherwise improve any artificial intelligence, machine learning, or statistical model for itself or\nany third party.\n4.4 If Asteron Cloud Services Private Limited believes that an instruction received from the Bank infringes\napplicable law, it shall promptly notify the Bank in writing before carrying out that instruction, unless\nprohibited by law from doing so."
+                "4.1 Veridian Process Systems Private Limited shall process Personal Data and Bank Data solely for the purpose of providing the Services to Peninsula Mercantile Bank Limited and in accordance with the Bank’s documented\ninstructions communicated in writing, including through authorized email, implementation records, signed\nwork orders, and support tickets.",
+                "4.2 Veridian Process Systems Private Limited shall not sell, disclose, commercialize, license, or otherwise\nexploit Personal Data for its own independent commercial purposes.",
+                "4.3 Veridian Process Systems Private Limited shall not use Personal Data or Bank Data to train, fine-tune,\nbenchmark, or validate any artificial intelligence, machine learning, large language, or predictive analytics\nmodel for itself or for any third party.",
+                "4.4 Veridian Process Systems Private Limited may use service usage patterns, performance indicators, and\noperational insights derived from the Services to improve platform reliability, support quality, and feature\neffectiveness, provided that such use is undertaken in a manner consistent with applicable law and good\nindustry practice."
             ],
             "evidence_snippets": [
-                "\"process Personal Data solely on behalf of Sahyadri Commercial documented instructions communicated by the Bank in writing\" (4.1)",
-                "\"shall not sell, disclose, mine, profile, enrich, commercialize, or otherwise use Personal Data for its own independent purposes\" (4.2)",
-                "\"shall not use Personal Data or Bank Data to train, fine‑tune, validate, benchmark, or otherwise improve any artificial intelligence, machine learning, or statistical model\" (4.3)",
-                "\"shall promptly notify the Bank in writing before carrying out that instruction\" (4.4)",
-                "\"may compile generalized service usage metrics and operational learnings to improve the performance...\" (4.5)"
+                "4.1 Veridian Process Systems Private Limited shall process Personal Data and Bank Data solely for the purpose of providing the Services to Peninsula Mercantile Bank Limited and in accordance with the Bank’s documented instructions...",
+                "4.3 Veridian Process Systems Private Limited shall not use Personal Data or Bank Data to train, fine-tune, benchmark, or validate any artificial intelligence, machine learning, large language, or predictive analytics model...",
+                "4.4 Veridian Process Systems Private Limited may use service usage patterns, performance indicators, and operational insights derived from the Services to improve platform reliability, support quality, and feature effectiveness...",
+                "4.5 If Veridian Process Systems Private Limited believes that an instruction of the Bank may violate applicable law, it shall notify the Bank in writing...",
+                "Veridian Process Systems Private Limited shall process Personal Data and Bank Data solely for the purpose of providing the Services to Peninsula Mercantile Bank Limited and in accordance with the Bank’s documented instructions communicated in writing..."
             ],
             "red_flags": [
-                "clause 4.5 permits compiling generalized service usage metrics to improve performance, which is an internal analytics/improvement use",
-                "improve services"
+                "internal improvement or analytics carve out"
             ],
-            "contradictions": [
-                "clause 4.5 allows internal improvement of services, contradicting the absolute prohibition in clause 4.3"
-            ],
-            "reason": "All required purpose‑limitation mandates are present, but a clause allowing internal service‑performance improvement creates a red flag and a contradiction with the strict prohibition on internal analytics.",
+            "contradictions": [],
+            "reason": "Relevant clauses were found, but one or more mandatory elements remain missing or unsupported: secondary, incompatible, or unauthorized use is prohibited, including analytics, profiling, advertising, internal improvement, benchmarking, and model training unless separately approved in writing and legally permitted.",
+            "applicability": null,
             "operational_impact": null,
-            "recommended_fix_summary": "Add or strengthen language covering: resolve contradiction: clause 4.5 allows internal improvement of services, contradicting the absolute prohibition in clause 4.3.",
-            "banking_regulatory_relevance": "Relevant for bank oversight, vendor risk, and regulatory defensibility."
+            "recommended_fix_summary": "Add or strengthen language covering: secondary, incompatible, or unauthorized use is prohibited, including analytics, profiling, advertising, internal improvement, benchmarking, and model training unless separately approved in writing and legally permitted.",
+            "banking_regulatory_relevance": "Relevant for bank oversight, outsourcing risk, and regulatory defensibility."
         },
         {
             "control_id": "adequate_security_safeguards",
             "title": "Adequate Security Safeguards",
-            "status": "complete",
-            "confidence": 0.92,
-            "found_elements": [
-                "general security commitment",
-                "technical and or organizational safeguards",
-                "protection against unauthorized access, loss, misuse, or breach",
-                "encryption in transit",
-                "access controls or least privilege",
-                "logging and monitoring",
-                "backup and recovery"
-            ],
-            "missing_elements": [],
-            "matched_clauses": [
-                "Bank Data against unauthorized access, unauthorized disclosure, destruction, loss, alteration, and misuse.",
-                "12.3 Asteron Cloud Services Private Limited shall ensure that any retained copies remain protected by\ncompleted.\n12.4 Backup media containing Bank Data that cannot be immediately deleted in the ordinary course shall be\noverwritten or rendered inaccessible in accordance with Asteron Cloud Services Private Limited’s backup\nretention cycle, provided that such data shall not be restored except where required for disaster recovery\ntesting or legal compliance.\n12.5 Upon completion of deletion from active systems, Asteron Cloud Services Private Limited shall provide",
-                "include reasonable administrative, technical, and physical safeguards appropriate to the nature of the Services.\n6.3 Asteron Cloud Services Private Limited shall maintain role-based access management for its production\nsupport personnel and shall review privileged access periodically.\n6.4 Bank Data transmitted over public networks shall be encrypted in transit using current industry-standard\ntransport encryption.\n6.5 Asteron Cloud Services Private Limited shall maintain centralized logging for administrative actions in\nproduction systems and retain such logs for a reasonable period in accordance with its internal policy."
-            ],
-            "evidence_snippets": [
-                "shall maintain an information security program designed to protect Bank Data",
-                "include reasonable administrative, technical, and physical safeguards appropriate to the nature of the Services",
-                "protect Bank Data against unauthorized access, unauthorized disclosure, destruction, loss, alteration, and misuse",
-                "Bank Data transmitted over public networks shall be encrypted in transit",
-                "maintain role‑based access management for its production support personnel"
-            ],
-            "red_flags": [
-                "Reference to \"generally accepted industry practices\" may constitute a downgrade trigger by invoking industry‑standard language."
-            ],
-            "contradictions": [],
-            "reason": "All mandatory security elements are present and clearly articulated; several optional strengtheners are also included. The only concern is the reliance on generic industry‑practice language, which may dilute the obligations.",
-            "operational_impact": null,
-            "recommended_fix_summary": null,
-            "banking_regulatory_relevance": null
-        },
-        {
-            "control_id": "breach_notification_sla",
-            "title": "Breach Notification SLAs",
             "status": "partial",
-            "confidence": 0.56,
+            "confidence": 0.69,
             "found_elements": [
-                "explicit notification obligation for incidents or breaches",
-                "trigger based on discovery or awareness of the incident",
-                "remediation support"
+                "reasonable security safeguards are required to prevent personal data breach",
+                "encryption, obfuscation, masking, or tokenization controls are required where appropriate",
+                "access controls over computer resources are required",
+                "logs, monitoring, and review are required for detecting unauthorized access",
+                "backup or continued-processing arrangements are required",
+                "processor security obligations and technical and organizational measures are required",
+                "security assessments or penetration testing"
             ],
             "missing_elements": [
-                "defined timeline or very tight timing language",
-                "vendor cooperation or support after notice"
+                "relevant logs and data are retained for at least one year where required for detection, investigation, remediation, and continuity"
             ],
             "matched_clauses": [
-                "7.1 Asteron Cloud Services Private Limited shall notify Sahyadri Commercial Bank Limited promptly after\nbecoming aware of a Security Incident affecting Bank Data.\n7.2 Such notice shall be made by email to the Bank’s designated contact and shall include, to the extent then\nknown, a summary of the nature of the incident and the categories of data affected.",
-                "contain its effects, and mitigate any ongoing harm."
+                "6.2 Such program shall include administrative, technical, organizational, and physical safeguards designed to\nprotect Bank Data against unauthorized access, unauthorized disclosure, destruction, loss, alteration, and\nmisuse.",
+                "6.3 Veridian Process Systems Private Limited shall implement encryption for Bank Data transmitted over public\nnetworks and shall maintain encryption for Bank Data stored in production databases and managed storage\nsystems.",
+                "6.4 Veridian Process Systems Private Limited shall maintain role-based access controls, privileged-access\nreview procedures, secure authentication mechanisms, administrative logging, malware controls, secure\nconfiguration practices, and periodic vulnerability review processes.",
+                "13.1 Veridian Process Systems Private Limited shall maintain business continuity and disaster recovery\narrangements appropriate to the Services."
             ],
             "evidence_snippets": [
-                "shall notify Sahyadri Commercial Bank Limited promptly after becoming aware of a Security Incident",
-                "shall take reasonable steps to investigate the Security Incident, contain its effects, and mitigate any ongoing harm",
-                "after becoming aware of a Security Incident"
+                "6.2 Such program shall include administrative, technical, organizational, and physical safeguards designed to\nprotect Bank Data against unauthorized access, unauthorized disclosure, destruction, loss, alteration, and\nmisuse.",
+                "6.3 Veridian Process Systems Private Limited shall implement encryption for Bank Data transmitted over public\nnetworks and shall maintain encryption for Bank Data stored in production databases and managed storage\nsystems.",
+                "6.4 Veridian Process Systems Private Limited shall maintain role-based access controls, privileged-access\nreview procedures, secure authentication mechanisms, administrative logging, malware controls, secure\nconfiguration practices, and periodic vulnerability review processes.",
+                "13.1 Veridian Process Systems Private Limited shall maintain business continuity and disaster recovery\narrangements appropriate to the Services.",
+                "Such program shall include administrative, technical, organizational, and physical safeguards designed to protect Bank Data against unauthorized access, unauthorized disclosure, destruction, loss, alteration, and misuse.",
+                "Veridian Process Systems Private Limited shall implement encryption for Bank Data transmitted over public networks and shall maintain encryption for Bank Data stored in production databases and managed storage systems."
             ],
             "red_flags": [
-                "use of \"promptly\" as the only timing language (downgrade trigger)",
-                "no explicit tight deadline such as \"within 24 hours\"",
-                "cooperation clause not linked to notice event",
-                "promptly"
+                "no one-year log retention coverage"
             ],
             "contradictions": [],
-            "reason": "The contract includes a clear notice duty and awareness trigger, but lacks a strict timeline and an explicit post‑notice cooperation requirement, and relies on the downgraded term \"promptly\".",
+            "reason": "Relevant clauses were found, but one or more mandatory elements remain missing or unsupported: relevant logs and data are retained for at least one year where required for detection, investigation, remediation, and continuity.",
+            "applicability": null,
             "operational_impact": null,
-            "recommended_fix_summary": "Add or strengthen language covering: defined timeline or very tight timing language.",
-            "banking_regulatory_relevance": "Relevant for bank oversight, vendor risk, and regulatory defensibility."
+            "recommended_fix_summary": "Add or strengthen language covering: relevant logs and data are retained for at least one year where required for detection, investigation, remediation, and continuity.",
+            "banking_regulatory_relevance": "Relevant for bank oversight, outsourcing risk, and regulatory defensibility."
         },
         {
-            "control_id": "dsr_assistance",
-            "title": "Assistance with Data Principal Rights (DSRs)",
+            "control_id": "personal_data_breach_notification_and_incident_cooperation",
+            "title": "Personal Data Breach Notification and Incident Cooperation",
             "status": "partial",
-            "confidence": 0.87,
+            "confidence": 0.43,
             "found_elements": [
-                "assist with access requests",
-                "assist with correction or rectification",
-                "assist with deletion or erasure",
-                "applies within vendor systems or hosted environments",
-                "defined operational timelines",
-                "export or search support",
-                "vendor cannot respond directly without bank approval",
-                "support for restriction or suppression workflows"
+                "vendor must provide ongoing information and updates sufficient for the organization's reporting obligations",
+                "vendor must fully cooperate in investigation, impact assessment, containment, remediation, recovery, root-cause-analysis, recurrence prevention, and required notifications",
+                "vendor must fully cooperate in investigation, impact assessment, containment, remediation, recovery, root-cause analysis, recurrence prevention, and required notifications"
             ],
             "missing_elements": [
-                "remove weakening language: reasonable cooperation language may downgrade the assistance obligation"
+                "vendor must notify the organization without delay upon actual or suspected personal data breach or security incident",
+                "vendor must preserve relevant logs, records, evidence, and affected data",
+                "vendor must not suppress, alter, or delete relevant evidence except as strictly required for containment and recovery"
             ],
             "matched_clauses": [
-                "as it becomes reasonably available.\n8. Assistance with Customer and Data Principal Requests\n8.1 Asteron Cloud Services Private Limited shall, taking into account the nature of the processing and the\ninformation available to it, assist Sahyadri Commercial Bank Limited in responding to requests from customers\nand other data principals relating to access, correction, rectification, update, restriction, export, deletion, or\nerasure of Personal Data processed in connection with the Services.\n8.2 Upon receiving a request directly from any customer or data principal concerning Personal Data processed\non behalf of the Bank, Asteron Cloud Services Private Limited shall not respond directly except on the\ndocumented instruction of the Bank, unless required to do so by applicable law.\n8.3 Asteron Cloud Services Private Limited shall provide reasonable cooperation to search, retrieve, correct,\nexport, suppress, or delete relevant Personal Data within its hosted environment and support systems where\nsuch action is required by the Bank.",
-                "8.1 Asteron Cloud Services Private Limited shall, taking into account the nature of the processing and the\ninformation available to it, assist Sahyadri Commercial Bank Limited in responding to requests from customers\nand other data principals relating to access, correction, rectification, update, restriction, export, deletion, or\nerasure of Personal Data processed in connection with the Services.\n8.2 Upon receiving a request directly from any customer or data principal concerning Personal Data processed\non behalf of the Bank, Asteron Cloud Services Private Limited shall not respond directly except on the\ndocumented instruction of the Bank, unless required to do so by applicable law.\n8.3 Asteron Cloud Services Private Limited shall provide reasonable cooperation to search, retrieve, correct,\nexport, suppress, or delete relevant Personal Data within its hosted environment and support systems where\nsuch action is required by the Bank.\n8.4 Asteron Cloud Services Private Limited shall maintain internal procedures to route such requests for\noperational handling without undue delay.\n9. Subcontracting and Sub-processing",
-                "8. Assistance with Customer and Data Principal Requests\n8.1 Asteron Cloud Services Private Limited shall, taking into account the nature of the processing and the\ninformation available to it, assist Sahyadri Commercial Bank Limited in responding to requests from customers\nand other data principals relating to access, correction, rectification, update, restriction, export, deletion, or\nerasure of Personal Data processed in connection with the Services.\n8.2 Upon receiving a request directly from any customer or data principal concerning Personal Data processed\non behalf of the Bank, Asteron Cloud Services Private Limited shall not respond directly except on the\ndocumented instruction of the Bank, unless required to do so by applicable law.\n8.3 Asteron Cloud Services Private Limited shall provide reasonable cooperation to search, retrieve, correct,\nexport, suppress, or delete relevant Personal Data within its hosted environment and support systems where\nsuch action is required by the Bank.\n8.4 Asteron Cloud Services Private Limited shall maintain internal procedures to route such requests for\noperational handling without undue delay."
+                "7.1 Veridian Process Systems Private Limited shall notify Peninsula Mercantile Bank Limited without undue\ndelay after becoming aware of a Security Incident affecting Bank Data.",
+                "7.4 Veridian Process Systems Private Limited shall provide additional information as it becomes reasonably\navailable and shall cooperate with the Bank in relation to incident handling.",
+                "11.2 Veridian Process Systems Private Limited shall cooperate in good faith with reasonable requests from the\nBank concerning information security, incident handling, and service operations."
             ],
             "evidence_snippets": [
-                "assist ... in responding to requests ... relating to access, correction, rectification, update, restriction, export, deletion, or erasure",
-                "shall not respond directly except on the documented instruction of the Bank",
-                "provide reasonable cooperation to search, retrieve, correct, export, suppress, or delete relevant Personal Data within its hosted environment",
-                "shall maintain internal procedures to ... without undue delay",
-                "assist ... in responding to requests ... relating to access"
+                "7.1 Veridian Process Systems Private Limited shall notify Peninsula Mercantile Bank Limited without undue\ndelay after becoming aware of a Security Incident affecting Bank Data.",
+                "7.4 Veridian Process Systems Private Limited shall provide additional information as it becomes reasonably\navailable and shall cooperate with the Bank in relation to incident handling.",
+                "11.2 Veridian Process Systems Private Limited shall cooperate in good faith with reasonable requests from the\nBank concerning information security, incident handling, and service operations.",
+                "Veridian Process Systems Private Limited shall provide additional information as it becomes reasonably available...",
+                "...and shall cooperate with the Bank in relation to incident handling.",
+                "Veridian Process Systems Private Limited shall cooperate in good faith with reasonable requests from the Bank concerning information security, incident handling, and service operations."
             ],
             "red_flags": [
-                "reasonable cooperation language may downgrade the assistance obligation",
-                "general cooperation"
+                "prompt or without undue delay timing only"
             ],
             "contradictions": [],
-            "reason": "The clause bundle comprehensively covers all mandatory DSR assistance duties, applies them to the vendor’s hosted environment, and includes several optional strengtheners, though the use of “reasonable cooperation” introduces a potential downgrade.",
+            "reason": "Relevant clauses were found, but one or more mandatory elements remain missing or unsupported: vendor must notify the organization without delay upon actual or suspected personal data breach or security incident.",
+            "applicability": null,
             "operational_impact": null,
-            "recommended_fix_summary": "Add or strengthen language covering: remove weakening language: reasonable cooperation language may downgrade the assistance obligation.",
-            "banking_regulatory_relevance": "Relevant for bank oversight, vendor risk, and regulatory defensibility."
+            "recommended_fix_summary": "Add or strengthen language covering: vendor must notify the organization without delay upon actual or suspected personal data breach or security incident.",
+            "banking_regulatory_relevance": "Relevant for bank oversight, outsourcing risk, and regulatory defensibility."
         },
         {
-            "control_id": "subprocessing_restrictions",
-            "title": "Sub-processing Restrictions",
+            "control_id": "data_principal_rights_and_complaint_handling_assistance",
+            "title": "Data Principal Rights and Complaint-Handling Assistance",
             "status": "partial",
             "confidence": 0.2,
             "found_elements": [
-                "vendor remains responsible for sub-processors",
-                "sub-processor list disclosure"
+                "vendor may not respond directly without organization approval except where required by law",
+                "search retrieval export or suppression support is covered"
             ],
             "missing_elements": [
-                "prior written authorization or approval of the bank",
-                "no unrestricted sub-processing",
-                "equivalent obligations imposed on the sub-processor"
+                "vendor must assist with data principal requests, complaints, queries, and rights exercises for data processed through its systems or services",
+                "assistance covers access, correction, completion, updating, erasure, consent-withdrawal-related changes, grievance handling, and other actions needed for legal compliance",
+                "assistance must be provided within timelines specified by the organization and fast enough for legal or regulatory deadlines",
+                "assistance extends to nominee-based rights exercise in case of death or incapacity"
             ],
             "matched_clauses": [
-                "8.4 Asteron Cloud Services Private Limited shall maintain internal procedures to route such requests for\noperational handling without undue delay.\n9. Subcontracting and Sub-processing\n9.1 Asteron Cloud Services Private Limited may engage its Affiliates and specialized infrastructure partners in\nconnection with the Services, provided that Asteron Cloud Services Private Limited remains responsible for\noverall service delivery.\n9.2 Asteron Cloud Services Private Limited shall use commercially reasonable efforts to ensure that any such\nthird party is bound by confidentiality and security obligations appropriate to the services being provided.\n9.3 On request, Asteron Cloud Services Private Limited shall provide the Bank with a current list of material\nsubcontractors used for the Services.",
-                "9.1 Asteron Cloud Services Private Limited may engage its Affiliates and specialized infrastructure partners in\nconnection with the Services, provided that Asteron Cloud Services Private Limited remains responsible for\noverall service delivery.\n9.2 Asteron Cloud Services Private Limited shall use commercially reasonable efforts to ensure that any such\nthird party is bound by confidentiality and security obligations appropriate to the services being provided.\n9.3 On request, Asteron Cloud Services Private Limited shall provide the Bank with a current list of material\nsubcontractors used for the Services.\n10. Records and Cooperation\n10.1 Asteron Cloud Services Private Limited shall maintain records reasonably necessary to demonstrate\nperformance of the Services and compliance with its obligations under this Agreement.",
-                "9. Subcontracting and Sub-processing\n9.1 Asteron Cloud Services Private Limited may engage its Affiliates and specialized infrastructure partners in\nconnection with the Services, provided that Asteron Cloud Services Private Limited remains responsible for\noverall service delivery.\n9.2 Asteron Cloud Services Private Limited shall use commercially reasonable efforts to ensure that any such\nthird party is bound by confidentiality and security obligations appropriate to the services being provided.\n9.3 On request, Asteron Cloud Services Private Limited shall provide the Bank with a current list of material\nsubcontractors used for the Services.\n10. Records and Cooperation"
+                "8.1 Veridian Process Systems Private Limited shall assist Peninsula Mercantile Bank Limited in responding to\nrequests from customers and other data principals relating to access to Personal Data, correction of inaccurate\ndata, and deletion of Personal Data processed in connection with the Services.",
+                "8.2 If Veridian Process Systems Private Limited receives such a request directly, it shall promptly notify the\nBank and shall not respond directly except on the written instruction of the Bank or as required by law.",
+                "8.3 Veridian Process Systems Private Limited shall provide reasonable cooperation to search for, retrieve,\ncorrect, and delete relevant Personal Data within the hosted environment where required by the Bank."
             ],
             "evidence_snippets": [
-                "remains responsible for overall service delivery.",
-                "shall use commercially reasonable efforts to ensure that any such third party is bound by confidentiality and security obligations appropriate to the services being provided.",
-                "On request, Asteron Cloud Services Private Limited shall provide the Bank with a current list of material subcontractors used for the Services."
+                "8.1 Veridian Process Systems Private Limited shall assist Peninsula Mercantile Bank Limited in responding to\nrequests from customers and other data principals relating to access to Personal Data, correction of inaccurate\ndata, and deletion of Personal Data processed in connection with the Services.",
+                "8.2 If Veridian Process Systems Private Limited receives such a request directly, it shall promptly notify the\nBank and shall not respond directly except on the written instruction of the Bank or as required by law.",
+                "8.3 Veridian Process Systems Private Limited shall provide reasonable cooperation to search for, retrieve,\ncorrect, and delete relevant Personal Data within the hosted environment where required by the Bank."
             ],
             "red_flags": [
-                "affiliate carve-out",
-                "notice only",
-                "blanket approval"
+                "assistance limited to reasonable efforts only",
+                "no express timeline support",
+                "complaints or grievance handling not clearly covered"
             ],
-            "contradictions": [
-                "vendor may appoint subcontractors freely",
-                "subcontractors are outside compliance obligations"
-            ],
-            "reason": "The clause provides vendor liability and a list‑disclosure option but lacks required bank approval, allows unrestricted subcontracting, and uses only ‘commercially reasonable efforts’ for equivalent obligations, triggering red flags and contradictions.",
+            "contradictions": [],
+            "reason": "Relevant clauses were found, but one or more mandatory elements remain missing or unsupported: vendor must assist with data principal requests, complaints, queries, and rights exercises for data processed through its systems or services.",
+            "applicability": null,
             "operational_impact": null,
-            "recommended_fix_summary": "Add or strengthen language covering: prior written authorization or approval of the bank.",
-            "banking_regulatory_relevance": "Relevant for bank oversight, vendor risk, and regulatory defensibility."
+            "recommended_fix_summary": "Add or strengthen language covering: vendor must assist with data principal requests, complaints, queries, and rights exercises for data processed through its systems or services.",
+            "banking_regulatory_relevance": "Relevant for bank oversight, outsourcing risk, and regulatory defensibility."
         },
         {
-            "control_id": "deletion_or_return_on_termination",
-            "title": "Data Deletion / Return upon Termination",
-            "status": "complete",
-            "confidence": 0.92,
-            "found_elements": [
-                "return or delete obligation exists",
-                "applies on termination, expiry, or bank instruction",
-                "covers personal data held by the vendor",
-                "includes timing or completion requirement",
-                "covers backups or copies",
-                "narrow legal retention carve-out",
-                "continuing protection until deletion is complete"
-            ],
-            "missing_elements": [],
-            "matched_clauses": [
-                "the option of the Bank, return Bank Data in a commonly readable electronic format or securely delete such\nBank Data from active systems under its control.\n12.3 Asteron Cloud Services Private Limited shall ensure that any retained copies remain protected by",
-                "as required to complete an orderly transition or as otherwise required by law.",
-                "the option of the Bank, return Bank Data in a commonly readable electronic format or securely delete such\nBank Data from active systems under its control.\n12.3 Asteron Cloud Services Private Limited shall ensure that any retained copies remain protected by\n12.4 Backup media containing Bank Data that cannot be immediately deleted in the ordinary course shall be\noverwritten or rendered inaccessible in accordance with Asteron Cloud Services Private Limited’s backup\nretention cycle, provided that such data shall not be restored except where required for disaster recovery\ntesting or legal compliance."
-            ],
-            "evidence_snippets": [
-                "Within thirty days after the effective date of termination, Asteron Cloud Services Private Limited shall, at the option of the Bank, return Bank Data in a commonly readable electronic format or securely delete such Bank Data from active systems under its control.",
-                "Asteron Cloud Services Private Limited shall ensure that any retained copies remain protected by ...",
-                "Backup media containing Bank Data that cannot be immediately deleted ... shall be overwritten or rendered inaccessible in accordance with Asteron Cloud Services Private Limited’s backup retention cycle, provided that such data shall not be restored except where required for disaster recovery testing or legal compliance.",
-                "as required to complete an orderly transition or as otherwise required by law.",
-                "return Bank Data in a commonly readable electronic format or securely delete such Bank Data"
-            ],
-            "red_flags": [
-                "Backup deletion is tied to the vendor's backup retention cycle without a specific timeline, potentially extending retention.",
-                "Data may be restored for disaster recovery testing or legal compliance, which could conflict with a complete deletion objective."
-            ],
-            "contradictions": [
-                "Allowance for restoration of backup copies for disaster recovery/testing may undermine the deletion obligation."
-            ],
-            "reason": "All mandatory elements are present and clearly expressed; several optional strengtheners are also satisfied, though backup handling lacks a precise timeline and permits limited restoration, which are noted as red flags and a potential contradiction.",
-            "operational_impact": null,
-            "recommended_fix_summary": null,
-            "banking_regulatory_relevance": null
-        },
-        {
-            "control_id": "audit_rights_and_regulator_access",
-            "title": "Audit Rights and Regulatory Access",
-            "status": "missing",
-            "confidence": 0.05,
+            "control_id": "sub_processing_restrictions",
+            "title": "Sub-Processing Restrictions",
+            "status": "partial",
+            "confidence": 0.3,
             "found_elements": [],
             "missing_elements": [
-                "explicit bank audit right",
-                "vendor cooperation obligation",
-                "access to relevant records, systems, controls, or evidence",
-                "audit right is meaningful and not illusory"
+                "vendor may not appoint, engage, replace, or continue any subprocessor or downstream processing party without prior written authorization",
+                "subprocessors must be bound by equivalent obligations covering data protection, confidentiality, security, purpose limitation, deletion, cooperation, and compliance",
+                "vendor remains fully responsible for the acts, omissions, failures, and breaches of subprocessors"
+            ],
+            "matched_clauses": [],
+            "evidence_snippets": [],
+            "red_flags": [],
+            "contradictions": [],
+            "reason": "Relevant clauses were found, but one or more mandatory elements remain missing or unsupported: vendor may not appoint, engage, replace, or continue any subprocessor or downstream processing party without prior written authorization.",
+            "applicability": null,
+            "operational_impact": null,
+            "recommended_fix_summary": "Add or strengthen language covering: vendor may not appoint, engage, replace, or continue any subprocessor or downstream processing party without prior written authorization.",
+            "banking_regulatory_relevance": "Relevant for bank oversight, outsourcing risk, and regulatory defensibility."
+        },
+        {
+            "control_id": "data_deletion_return_and_cessation_of_processing",
+            "title": "Data Deletion / Return and Cessation of Processing",
+            "status": "partial",
+            "confidence": 0.3,
+            "found_elements": [],
+            "missing_elements": [
+                "vendor must cease processing on termination, instruction, consent withdrawal where relevant, completion of purpose, or when processing is no longer legally permitted",
+                "cessation must occur within a reasonable time and within a clearly stated maximum period",
+                "vendor must securely delete or return personal data and copies under its control in accordance with the organization's instructions",
+                "continued retention is limited to what is legally required and further unauthorized use is prohibited during retention",
+                "vendor must delete retained data once retention is no longer legally required",
+                "vendor must provide written confirmation, certification, or equivalent evidence of deletion, return, or restricted retention where required by the organization"
+            ],
+            "matched_clauses": [],
+            "evidence_snippets": [],
+            "red_flags": [],
+            "contradictions": [],
+            "reason": "Relevant clauses were found, but one or more mandatory elements remain missing or unsupported: vendor must cease processing on termination, instruction, consent withdrawal where relevant, completion of purpose, or when processing is no longer legally permitted.",
+            "applicability": null,
+            "operational_impact": null,
+            "recommended_fix_summary": "Add or strengthen language covering: vendor must cease processing on termination, instruction, consent withdrawal where relevant, completion of purpose, or when processing is no longer legally permitted.",
+            "banking_regulatory_relevance": "Relevant for bank oversight, outsourcing risk, and regulatory defensibility."
+        },
+        {
+            "control_id": "cross_border_transfer_and_offshore_access_restrictions",
+            "title": "Cross-Border Transfer and Offshore Access Restrictions",
+            "status": "partial",
+            "confidence": 0.3,
+            "found_elements": [],
+            "missing_elements": [
+                "vendor is prohibited from transferring, hosting, mirroring, replicating, backing up, disclosing, accessing, or otherwise making personal data available outside India or from permitting remote access from outside India unless expressly authorized in writing and legally permitted",
+                "vendor may not self-authorize offshore processing, hosting, support access, or onward transfer arrangements",
+                "any approved offshore arrangement remains subject to contractual controls and applicable government or competent-authority requirements"
+            ],
+            "matched_clauses": [],
+            "evidence_snippets": [],
+            "red_flags": [],
+            "contradictions": [],
+            "reason": "Relevant clauses were found, but one or more mandatory elements remain missing or unsupported: vendor is prohibited from transferring, hosting, mirroring, replicating, backing up, disclosing, accessing, or otherwise making personal data available outside India or from permitting remote access from outside India unless expressly authorized in writing and legally permitted.",
+            "applicability": null,
+            "operational_impact": null,
+            "recommended_fix_summary": "Add or strengthen language covering: vendor is prohibited from transferring, hosting, mirroring, replicating, backing up, disclosing, accessing, or otherwise making personal data available outside India or from permitting remote access from outside India unless expressly authorized in writing and legally permitted.",
+            "banking_regulatory_relevance": "Relevant for bank oversight, outsourcing risk, and regulatory defensibility."
+        },
+        {
+            "control_id": "audit_rights_evidence_access_and_regulatory_cooperation",
+            "title": "Audit Rights, Evidence Access, and Regulatory Cooperation",
+            "status": "partial",
+            "confidence": 0.3,
+            "found_elements": [],
+            "missing_elements": [
+                "organization has meaningful and enforceable rights to assess and verify compliance, not limited to document review only and not subject to vendor veto or open-ended mutual-agreement conditions without workable fallback",
+                "vendor must provide access to records, logs, policies, control evidence, systems, personnel, and relevant subprocessor information needed to verify compliance",
+                "confidentiality or commercial sensitivity may not block audit scope and must instead be handled through confidentiality undertakings or controlled access",
+                "vendor must cooperate with lawful regulatory or supervisory requests connected to the personal data processed under the agreement"
             ],
             "matched_clauses": [
-                "11.2 Asteron Cloud Services Private Limited may, at its discretion, provide copies or summaries of independent\naudit reports, security certifications, or control descriptions that it considers appropriate for customer review.\noperational feasibility considerations.\n11.4 Sahyadri Commercial Bank Limited shall not appoint any third-party assessor to access Asteron Cloud\nServices Private Limited’s premises or systems unless Asteron Cloud Services Private Limited separately agrees\nin writing for a specific case.\n12. Data Retention, Return, and Deletion",
-                "11.1 Sahyadri Commercial Bank Limited may, upon at least thirty business days’ prior written notice and not\nmore than once in any twelve-month period, request a review meeting with Asteron Cloud Services Private\nLimited to discuss the security and operational controls relevant to the Services.\n11.2 Asteron Cloud Services Private Limited may, at its discretion, provide copies or summaries of independent\naudit reports, security certifications, or control descriptions that it considers appropriate for customer review.\n11.4 Sahyadri Commercial Bank Limited shall not appoint any third-party assessor to access Asteron Cloud\nServices Private Limited’s premises or systems unless Asteron Cloud Services Private Limited separately agrees\nin writing for a specific case."
+                "written directions issued by the Bank.\n2. Definitions\nFor the purposes of this Agreement:\n“Bank Data” means all information, files, records, documents, forms, workflow entries, customer\ncommunications, employee records, operational logs, reports, metadata, account-related information, and any\nPersonal Data processed by Veridian Process Systems Private Limited in connection with the Services.\n“Personal Data” means any information relating to an identified or identifiable natural person that is processed\nby Veridian Process Systems Private Limited under this Agreement.\n“Services” means the hosted software platform, implementation support, data import functions, case routing\nfunctions, reporting services, storage, maintenance, and support services provided by Veridian Process\nSystems Private Limited under this Agreement.",
+                "corruption, destruction, loss, misuse, or unavailability of Bank Data or systems used to process Bank Data.\n“Subcontractor” means any third party engaged by Veridian Process Systems Private Limited in relation to the\nServices.\n3. Scope of Services",
+                "of providing the Services to Peninsula Mercantile Bank Limited and in accordance with the Bank’s documented\ninstructions communicated in writing, including through authorized email, implementation records, signed\nwork orders, and support tickets.\n4.2 Veridian Process Systems Private Limited shall not sell, disclose, commercialize, license, or otherwise\nexploit Personal Data for its own independent commercial purposes.\n4.3 Veridian Process Systems Private Limited shall not use Personal Data or Bank Data to train, fine-tune,\nbenchmark, or validate any artificial intelligence, machine learning, large language, or predictive analytics\nmodel for itself or for any third party.\n4.4 Veridian Process Systems Private Limited may use service usage patterns, performance indicators, and\noperational insights derived from the Services to improve platform reliability, support quality, and feature\neffectiveness, provided that such use is undertaken in a manner consistent with applicable law and good\nindustry practice.\n4.5 If Veridian Process Systems Private Limited believes that an instruction of the Bank may violate applicable\nlaw, it shall notify the Bank in writing before carrying out such instruction unless prohibited by law from doing\nso."
+            ],
+            "evidence_snippets": [],
+            "red_flags": [],
+            "contradictions": [],
+            "reason": "Relevant clauses were found, but one or more mandatory elements remain missing or unsupported: organization has meaningful and enforceable rights to assess and verify compliance, not limited to document review only and not subject to vendor veto or open-ended mutual-agreement conditions without workable fallback.",
+            "applicability": null,
+            "operational_impact": null,
+            "recommended_fix_summary": "Add or strengthen language covering: organization has meaningful and enforceable rights to assess and verify compliance, not limited to document review only and not subject to vendor veto or open-ended mutual-agreement conditions without workable fallback.",
+            "banking_regulatory_relevance": "Relevant for bank oversight, outsourcing risk, and regulatory defensibility."
+        },
+        {
+            "control_id": "data_accuracy_correction_and_rectification_support",
+            "title": "Data Accuracy, Correction, and Rectification Support",
+            "status": "partial",
+            "confidence": 0.56,
+            "found_elements": [
+                "vendor must support update, correction, completion, synchronization, suppression, or erasure of inaccurate, incomplete, misleading, stale, or unauthorized data within its systems",
+                "vendor must support completeness, accuracy, and consistency for decision-affecting or onward-disclosed data"
+            ],
+            "missing_elements": [
+                "vendor must support corresponding corrective action across subprocessors or linked processing environments where applicable"
+            ],
+            "matched_clauses": [
+                "8.1 Veridian Process Systems Private Limited shall assist Peninsula Mercantile Bank Limited in responding to\nrequests from customers and other data principals relating to access to Personal Data, correction of inaccurate\ndata, and deletion of Personal Data processed in connection with the Services.",
+                "8.3 Veridian Process Systems Private Limited shall provide reasonable cooperation to search for, retrieve,\ncorrect, and delete relevant Personal Data within the hosted environment where required by the Bank."
             ],
             "evidence_snippets": [
-                "Sahyadri Commercial Bank Limited may, upon at least thirty business days’ prior written notice and not more than once in any twelve‑month period, request a review meeting...",
-                "Asteron Cloud Services Private Limited may, at its discretion, provide copies or summaries of independent audit reports, security certifications, or control descriptions...",
-                "Sahyadri Commercial Bank Limited shall not appoint any third‑party assessor to access Asteron Cloud Services Private Limited’s premises or systems unless ... separately agrees in writing."
+                "8.1 Veridian Process Systems Private Limited shall assist Peninsula Mercantile Bank Limited in responding to requests from customers and other data principals relating to access to Personal Data, correction of inaccurate data, and deletion of Personal Data processed in connection with the Services.",
+                "8.3 Veridian Process Systems Private Limited shall provide reasonable cooperation to search for, retrieve, correct, and delete relevant Personal Data within the hosted environment where required by the Bank.",
+                "Veridian Process Systems Private Limited shall assist Peninsula Mercantile Bank Limited in responding to requests from customers and other data principals relating to access to Personal Data, correction of inaccurate data, and deletion of Personal Data processed in connection with the Services.",
+                "Veridian Process Systems Private Limited shall provide reasonable cooperation to search for, retrieve, correct, and delete relevant Personal Data within the hosted environment where required by the Bank."
             ],
             "red_flags": [
-                "once per year only",
-                "summary reports only",
-                "vendor may deny audit at its sole discretion",
-                "third‑party assessor access prohibited",
-                "operational feasibility considerations",
-                "subject to vendor policy"
+                "support limited to reasonable efforts only",
+                "no linked-system or downstream propagation support"
             ],
-            "contradictions": [
-                "vendor may deny audit at its sole discretion",
-                "third‑party assessor access prohibited",
-                "third-party assessor access prohibited"
-            ],
-            "reason": "The audit clause limits the bank to an annual review meeting and discretionary provision of summary reports, forbids third‑party assessors, and does not obligate the vendor to cooperate or grant direct access to records, resulting in all mandatory audit elements being missing.",
+            "contradictions": [],
+            "reason": "Relevant clauses were found, but one or more mandatory elements remain missing or unsupported: vendor must support corresponding corrective action across subprocessors or linked processing environments where applicable.",
+            "applicability": "Scored on baseline contract text without elevated decision-affecting or onward-disclosure context.",
             "operational_impact": null,
-            "recommended_fix_summary": "Add or strengthen language covering: explicit bank audit right.",
-            "banking_regulatory_relevance": "Relevant for bank oversight, vendor risk, and regulatory defensibility."
+            "recommended_fix_summary": "Add or strengthen language covering: vendor must support corresponding corrective action across subprocessors or linked processing environments where applicable.",
+            "banking_regulatory_relevance": "Relevant for bank oversight, outsourcing risk, and regulatory defensibility."
+        },
+        {
+            "control_id": "data_localisation_processing_location_and_sector_specific_data_residency_compliance",
+            "title": "Data Localisation / Processing Location and Sector-Specific Data Residency Compliance",
+            "status": "partial",
+            "confidence": 0.3,
+            "found_elements": [],
+            "missing_elements": [
+                "all covered data, logs, backups, recordings, derived data, support-access data, and metadata must be stored, hosted, mirrored, backed up, retained, routed, accessed, and processed only within India",
+                "the India-only obligation applies to subprocessors, cloud providers, support providers, affiliates, and downstream parties",
+                "offshore transfer, offshore subprocessors, offshore support access, foreign cloud-region usage, and remote access from outside India are prohibited absent separate documented approval",
+                "processing, hosting, backup, support-access, disaster-recovery, and cloud-region locations must be disclosed",
+                "prior written notification and approval are required before any location or arrangement change"
+            ],
+            "matched_clauses": [
+                "seg_005",
+                "seg_006"
+            ],
+            "evidence_snippets": [
+                "written directions issued by the Bank.\n2. Definitions\nFor the purposes of this Agreement:\n“Bank Data” means all information, files, records, documents, forms, workflow entries, customer\ncommunications, employee records, operational logs, reports, metadata, account-related information, and any\nPersonal Data processed by Veridian Process Systems Private Limited in connection with the Services.\n“Personal Data” means any information relating to an identified or identifiable natural person that is processed\nby Veridian Process Systems Private Limited under this Agreement.\n“Services” means the hosted software platform, implementation support, data import functions, case routing\nfunctions, reporting services, storage, maintenance, and support services provided by Veridian Process\nSystems Private Limited under this Agreement."
+            ],
+            "red_flags": [],
+            "contradictions": [],
+            "reason": "Relevant clauses were found, but one or more mandatory elements remain missing or unsupported: all covered data, logs, backups, recordings, derived data, support-access data, and metadata must be stored, hosted, mirrored, backed up, retained, routed, accessed, and processed only within India.",
+            "applicability": "Financial-sector mode applied.",
+            "operational_impact": null,
+            "recommended_fix_summary": "Add or strengthen language covering: all covered data, logs, backups, recordings, derived data, support-access data, and metadata must be stored, hosted, mirrored, backed up, retained, routed, accessed, and processed only within India.",
+            "banking_regulatory_relevance": "Relevant for bank oversight, outsourcing risk, and regulatory defensibility."
         }
     ],
     "overall_assessment": {
         "risk_level": "high",
         "key_gaps": [
-            "Strict Purpose Limitation: resolve contradiction: clause 4.5 allows internal improvement of services, contradicting the absolute prohibition in clause 4.3",
-            "Breach Notification SLAs: defined timeline or very tight timing language",
-            "Assistance with Data Principal Rights (DSRs): remove weakening language: reasonable cooperation language may downgrade the assistance obligation",
-            "Sub-processing Restrictions: prior written authorization or approval of the bank",
-            "Audit Rights and Regulatory Access: explicit bank audit right"
+            "Data Fiduciary / Data Processor Role Clarity: organization is the data fiduciary or equivalent principal controller",
+            "Strict Purpose Limitation and Lawful Instruction Control: secondary, incompatible, or unauthorized use is prohibited, including analytics, profiling, advertising, internal improvement, benchmarking, and model training unless separately approved in writing and legally permitted",
+            "Adequate Security Safeguards: relevant logs and data are retained for at least one year where required for detection, investigation, remediation, and continuity",
+            "Personal Data Breach Notification and Incident Cooperation: vendor must notify the organization without delay upon actual or suspected personal data breach or security incident",
+            "Data Principal Rights and Complaint-Handling Assistance: vendor must assist with data principal requests, complaints, queries, and rights exercises for data processed through its systems or services",
+            "Sub-Processing Restrictions: vendor may not appoint, engage, replace, or continue any subprocessor or downstream processing party without prior written authorization"
         ],
         "recommended_next_actions": [
-            "Add or strengthen language covering: resolve contradiction: clause 4.5 allows internal improvement of services, contradicting the absolute prohibition in clause 4.3.",
-            "Add or strengthen language covering: defined timeline or very tight timing language.",
-            "Add or strengthen language covering: remove weakening language: reasonable cooperation language may downgrade the assistance obligation.",
-            "Add or strengthen language covering: prior written authorization or approval of the bank.",
-            "Add or strengthen language covering: explicit bank audit right."
+            "Add or strengthen language covering: organization is the data fiduciary or equivalent principal controller.",
+            "Add or strengthen language covering: secondary, incompatible, or unauthorized use is prohibited, including analytics, profiling, advertising, internal improvement, benchmarking, and model training unless separately approved in writing and legally permitted.",
+            "Add or strengthen language covering: relevant logs and data are retained for at least one year where required for detection, investigation, remediation, and continuity.",
+            "Add or strengthen language covering: vendor must notify the organization without delay upon actual or suspected personal data breach or security incident.",
+            "Add or strengthen language covering: vendor must assist with data principal requests, complaints, queries, and rights exercises for data processed through its systems or services.",
+            "Add or strengthen language covering: vendor may not appoint, engage, replace, or continue any subprocessor or downstream processing party without prior written authorization."
         ]
     }
 }

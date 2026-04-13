@@ -6,6 +6,12 @@ const SUPPORTED_DOCUMENT_MIME_TYPES = new Set([
   "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
 ]);
 const SUPPORTED_DOCUMENT_LABEL = "PDF, DOC, or DOCX";
+const ANALYSIS_CONTEXT_LABELS = {
+  decision_affecting_processing: "Decision-affecting processing",
+  onward_disclosure_related: "Onward disclosure related",
+  financial_sector_mode: "Financial-sector mode",
+  regulated_entity_type: "Regulated entity type"
+};
 const VERDICT_OPTIONS = [
   { value: "unreviewed", label: "Unreviewed" },
   { value: "correct", label: "Correct" },
@@ -822,7 +828,8 @@ function normalizeContractResponse(data, uploadedFileName) {
       selected_controls: asStringArray(data.extraction_meta && data.extraction_meta.selected_controls),
       processing_time_ms: toNumberOrNull(data.extraction_meta && data.extraction_meta.processing_time_ms),
       llm_used: Boolean(data.extraction_meta && data.extraction_meta.llm_used),
-      analysis_version: asNonEmptyString(data.extraction_meta && data.extraction_meta.analysis_version) || "Unknown"
+      analysis_version: asNonEmptyString(data.extraction_meta && data.extraction_meta.analysis_version) || "Unknown",
+      analysis_context: normalizeAnalysisContext(data.extraction_meta && data.extraction_meta.analysis_context)
     },
     summary: {
       controls_complete: toInteger(data.summary && data.summary.controls_complete, computedCounts.complete),
@@ -845,6 +852,8 @@ function normalizeControl(control, index) {
   const controlId = asNonEmptyString(control.control_id) || `control_${index + 1}`;
   const title = asNonEmptyString(control.title) || humanizeId(controlId);
   const status = normalizeStatus(control.status);
+  const matchedClauses = asStringArray(control.matched_clauses);
+  const { clauseTexts, references } = splitMatchedClauses(matchedClauses);
 
   const normalized = {
     control_id: controlId,
@@ -853,11 +862,13 @@ function normalizeControl(control, index) {
     confidence: normalizeConfidence(control.confidence),
     found_elements: asStringArray(control.found_elements),
     missing_elements: asStringArray(control.missing_elements),
-    matched_clauses: asStringArray(control.matched_clauses),
+    matched_clauses: clauseTexts,
+    matched_references: references,
     evidence_snippets: asStringArray(control.evidence_snippets),
     red_flags: asStringArray(control.red_flags),
     contradictions: asStringArray(control.contradictions),
     reason: asNonEmptyString(control.reason) || "No review reasoning provided.",
+    applicability: asNullableString(control.applicability),
     operational_impact: asNullableString(control.operational_impact),
     recommended_fix_summary: asNullableString(control.recommended_fix_summary),
     banking_regulatory_relevance: asNullableString(control.banking_regulatory_relevance),
@@ -907,12 +918,14 @@ function buildSearchIndex(control) {
     control.title,
     control.reason,
     control.control_id,
+    control.applicability,
     ...control.found_elements,
     ...control.missing_elements,
     ...control.red_flags,
     ...control.contradictions,
     ...control.evidence_snippets,
-    ...control.matched_clauses
+    ...control.matched_clauses,
+    ...control.matched_references
   ]
     .join(" ")
     .toLowerCase();
@@ -1089,6 +1102,7 @@ function renderOverview() {
     ["Segments created", formatNumber(data.extraction_meta.segments_created)],
     ["OCR used", data.document_meta.ocr_used ? "Yes" : "No"],
     ["LLM used", data.extraction_meta.llm_used ? "Yes" : "No"],
+    ...getAnalysisContextEntries(data.extraction_meta.analysis_context),
     ["Created", formatDateTime(state.activeReviewMeta && state.activeReviewMeta.created_at)],
     ["Updated", formatDateTime(state.activeReviewMeta && state.activeReviewMeta.updated_at)]
   ];
@@ -1269,6 +1283,9 @@ function renderDetail(control) {
     ["Evidence", String(control.evidence_snippets.length)],
     ["Clauses", String(control.matched_clauses.length)]
   ];
+  if (control.matched_references.length) {
+    detailMetrics.push(["References", String(control.matched_references.length)]);
+  }
 
   dom.detailMetrics.innerHTML = detailMetrics
     .map(
@@ -1284,6 +1301,11 @@ function renderDetail(control) {
   dom.detailReviewCard.innerHTML = renderReviewCard(control);
 
   const insightItems = [
+    control.applicability
+      ? `<div class="detail-insight"><strong>Applicability</strong><span>${escapeHtml(
+          control.applicability
+        )}</span></div>`
+      : "",
     control.operational_impact
       ? `<div class="detail-insight"><strong>Operational impact</strong><span>${escapeHtml(
           truncate(control.operational_impact, 170)
@@ -1311,6 +1333,7 @@ function renderDetail(control) {
     renderPillSection("Missing elements", control.missing_elements, "is-warning"),
     renderPillSection("Red flags", control.red_flags, "is-danger"),
     renderPillSection("Contradictions", control.contradictions, "is-danger"),
+    renderPillSection("Matched references", control.matched_references, ""),
     renderTextCardSection("Matched clauses", control.matched_clauses, true),
     renderTextCardSection("Evidence snippets", control.evidence_snippets, false),
     control.recommended_fix_summary
@@ -2167,9 +2190,66 @@ function humanizeId(value) {
   return titleCase(String(value || "").replace(/_/g, " "));
 }
 
+function normalizeAnalysisContext(value) {
+  const source = value && typeof value === "object" && !Array.isArray(value) ? value : {};
+  return Object.keys(ANALYSIS_CONTEXT_LABELS).reduce((context, key) => {
+    context[key] = normalizeAnalysisContextValue(source[key]);
+    return context;
+  }, {});
+}
+
+function normalizeAnalysisContextValue(value) {
+  if (typeof value === "boolean") {
+    return value;
+  }
+  return asNullableString(value);
+}
+
+function getAnalysisContextEntries(context) {
+  if (!context || typeof context !== "object") {
+    return [];
+  }
+
+  return Object.entries(ANALYSIS_CONTEXT_LABELS)
+    .map(([key, label]) => {
+      const value = context[key];
+      if (value === null || value === undefined) {
+        return null;
+      }
+
+      return [label, formatAnalysisContextValue(value)];
+    })
+    .filter(Boolean);
+}
+
+function formatAnalysisContextValue(value) {
+  if (typeof value === "boolean") {
+    return value ? "Yes" : "No";
+  }
+  return String(value);
+}
+
 function getFileExtension(fileName) {
   const match = String(fileName || "").toLowerCase().match(/(\.[a-z0-9]+)$/);
   return match ? match[1] : "";
+}
+
+function splitMatchedClauses(items) {
+  return items.reduce(
+    (result, item) => {
+      if (isSegmentReference(item)) {
+        result.references.push(item);
+      } else {
+        result.clauseTexts.push(item);
+      }
+      return result;
+    },
+    { clauseTexts: [], references: [] }
+  );
+}
+
+function isSegmentReference(value) {
+  return /^seg_\d+$/i.test(String(value || "").trim());
 }
 
 function getSelectedFileLabel(file) {
